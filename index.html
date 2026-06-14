@@ -358,7 +358,7 @@ function randEnc(){return ENCOURAGE[Math.floor(Math.random()*ENCOURAGE.length)];
 function randEmo(){return ENC_EMOJI[Math.floor(Math.random()*ENC_EMOJI.length)];}
 
 /* 数学语音：把运算符读成中文 */
-function mathSpeak(qStr){const txt=qStr.replace(/\\+/g,'加').replace(/\\-/g,'减').replace(/×/g,'乘').replace(/÷/g,'除').replace(/= \\?/g,'等于多少');speak(txt);}
+function mathSpeak(qStr){const txt=qStr.replace(/\+/g,'加上').replace(/\-/g,'减去').replace(/×/g,'乘以').replace(/÷/g,'除以').replace(/= \?/g,'等于多少');speak(txt);}
 
 /* 弹窗式算术练习 */
 function openMathQuiz(range,type){S.page=0;const k=range+'_'+type;const pool=(MATH_BANK[k]||[]).slice(0,10);QA.list=pool;QA.idx=0;const titleMap={add:'加法',sub:'减法',mul:'乘法',div:'除法'};const title=`${range=='10'||range=='20'?range+'以内':range+'以内'}${titleMap[type]}`;const box=document.getElementById('quizBox');box.innerHTML=`<div class="modalTitle"><span>🧮 ${title}</span><button class="modalClose" onclick="closeMathQuiz()">✕</button></div><div id="quizInner"></div>`;document.getElementById('quizModal').classList.add('active');showMathQ();}
