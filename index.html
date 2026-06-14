@@ -2,438 +2,406 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>儿童启蒙万花筒</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>儿童启蒙乐园</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{-webkit-text-size-adjust:100%}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(145deg,#fff5f8,#e1f5fe);min-height:100vh;color:#4a4a4a;line-height:1.6;overflow-x:hidden}
-.topbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:10px 12px;background:#fff;border-radius:0 0 24px 24px;box-shadow:0 4px 16px rgba(0,0,0,.07);position:sticky;top:0;z-index:10;gap:8px}
-.logo{display:flex;align-items:center;font-size:17px;font-weight:800;color:#b03060;gap:6px;white-space:nowrap}
-.stage{display:flex;gap:6px;flex-wrap:wrap}
-.stage-btn{background:linear-gradient(135deg,#f8bbd0,#f48fb1);border:none;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 3px 8px rgba(244,143,177,.4);transition:transform .2s;white-space:nowrap}
-.stage-btn:hover{transform:scale(1.05)}
-.stage-btn.on{background:linear-gradient(135deg,#ce93d8,#ba68c8)}
-.lang-btn{background:#fff0f6;color:#b03060;border:2px solid #f8bbd0;padding:5px 10px;border-radius:18px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
-.home-btn{background:#fff0f6;color:#ad1457;border:2px solid #f8bbd0;padding:5px 10px;border-radius:18px;font-size:12px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap}
-.main{padding:8px 10px;max-width:960px;margin:0 auto}
-.hero{background:linear-gradient(145deg,#f8bbd0,#e1bee7);border-radius:24px;padding:14px 16px;margin:8px 0;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.06);color:#880e4f}
-.hero h2{font-size:20px;margin-bottom:4px}
-.hero p{font-size:13px;opacity:.9}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:8px 0}
-.grid-5{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0}
-.grid-10{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin:6px 0}
-.subj{background:#fff;border:none;border-radius:18px;padding:12px 4px;font-size:14px;font-weight:800;color:#6a1b9a;box-shadow:0 4px 12px rgba(0,0,0,.07);text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
-.subj:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.11)}
-.subj::after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.3);opacity:0;transition:opacity .2s}
-.subj:hover::after{opacity:1}
-.panel{background:#fff;border-radius:18px;padding:12px 12px 8px;margin:8px 0;box-shadow:0 4px 14px rgba(0,0,0,.06)}
-.panel-title{font-size:16px;font-weight:800;color:#880e4f;margin-bottom:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.panel-body{font-size:14px;color:#555;line-height:1.7}
-.cell{background:#fce4ec;border-radius:14px;padding:6px 4px;text-align:center;cursor:pointer;transition:transform .15s;border:2px solid transparent;min-height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
-.cell:hover{border-color:#f8bbd0;transform:scale(1.04)}
-.cell-big{font-size:22px;font-weight:800;color:#ad1457;line-height:1.1}
-.cell-en{font-size:11px;color:#888;font-weight:700}
-.cell-pinyin{font-size:12px;color:#8e24aa;font-weight:700}
-.cell-desc{font-size:11px;color:#666;line-height:1.3}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 8px;justify-content:center}
-.tab{background:#fff;border:2px solid #f8bbd0;color:#ad1457;padding:5px 10px;border-radius:18px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap}
-.tab.on{background:linear-gradient(135deg,#f8bbd0,#ce93d8);color:#fff;border-color:transparent}
-.card-btn{display:block;margin:6px auto;width:100%;max-width:400px;padding:12px;font-size:15px;font-weight:800;border:none;border-radius:20px;color:#fff;background:linear-gradient(135deg,#f8bbd0,#f48fb1);cursor:pointer;transition:transform .15s;box-shadow:0 4px 0 rgba(0,0,0,.12)}
-.card-btn:hover{transform:scale(1.02)}
-.ans{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:6px}
-.ans-btn{font-size:20px;font-weight:800;border:none;border-radius:16px;padding:10px 18px;color:#fff;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.12);transition:transform .15s;min-width:64px}
-.ans-btn:hover{transform:scale(1.05)}
-.quiz{font-size:28px;font-weight:900;color:#880e4f;text-align:center;margin:6px 0;min-height:36px}
-.prog{display:flex;justify-content:center;gap:4px;margin-bottom:6px}
-.dot{width:9px;height:9px;border-radius:50%;background:#eee}
-.dot.ok{background:#66bb6a}
-.fb{text-align:center;font-size:18px;font-weight:800;min-height:24px;margin-top:6px}
-.fb.ok{color:#2e7d32}
-.fb.err{color:#c62828}
-.back-btn{background:linear-gradient(135deg,#ce93d8,#ba68c8);border:none;color:#fff;padding:8px 18px;border-radius:20px;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 4px 8px rgba(0,0,0,.1);margin-top:6px}
-.footer{text-align:center;padding:20px 10px 40px;color:#999;font-size:12px}
-.stat-board{background:#fff;border-radius:20px;padding:12px;margin:8px 0;box-shadow:0 6px 18px rgba(0,0,0,.06)}
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.stat-box{text-align:center;padding:6px;border-radius:14px;cursor:pointer;transition:transform .2s,background .2s}
-.stat-box:hover{transform:scale(1.04);background:#fce4ec}
-.stat-num{font-size:24px;font-weight:900;color:#ad1457;line-height:1}
-.stat-label{font-size:11px;color:#888;margin-top:3px}
-.plan-bar-wrap{position:relative;height:16px;background:#fce4ec;border-radius:10px;margin:10px 4px 4px;overflow:hidden}
-.plan-bar{height:100%;background:linear-gradient(90deg,#f48fb1,#ce93d8);width:0%;border-radius:10px;transition:width .5s ease}
-.plan-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#880e4f;pointer-events:none}
-.today-list{display:flex;gap:5px;overflow-x:auto;padding:6px 2px;margin:4px 0;scrollbar-width:none}
-.today-list::-webkit-scrollbar{display:none}
-.today-item{flex:0 0 auto;background:#fce4ec;color:#880e4f;padding:4px 8px;border-radius:12px;font-size:11px;font-weight:700;white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis}
-.plan-set{text-align:center;margin-top:4px}
-.plan-set button{background:#fff0f6;color:#ad1457;border:2px solid #f8bbd0;padding:4px 12px;border-radius:16px;font-size:11px;font-weight:700;cursor:pointer}
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:flex-end;justify-content:center;padding:0}
-.modal-overlay.on{display:flex}
-.modal-sheet{background:#fff;border-radius:24px 24px 0 0;max-width:100%;width:100%;max-height:85vh;display:flex;flex-direction:column;box-shadow:0 -4px 30px rgba(0,0,0,.15);animation:slideUp .35s ease}
-.modal-head{padding:14px 16px 8px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #fce4ec}
-.modal-title{font-size:18px;font-weight:800;color:#880e4f}
-.modal-close{background:#fce4ec;border:none;width:32px;height:32px;border-radius:50%;font-size:20px;color:#ad1457;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
-.modal-body{padding:10px 14px 18px;overflow-y:auto;flex:1}
-.history-item{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;margin:5px 0;background:linear-gradient(135deg,#fff5f8,#fce4ec);border-radius:12px;font-size:13px}
-.history-item span{color:#880e4f;font-weight:700;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px}
-.history-item time{color:#999;font-size:11px;flex-shrink:0}
-.history-date{background:#f8bbd0;color:#fff;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:800;display:inline-block;margin:4px 0}
-@keyframes pop{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
-@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
-.panel{animation:pop .5s ease both}
-
-@media(min-width:480px){
-  .grid{grid-template-columns:repeat(3,1fr)}
-  .grid-5{grid-template-columns:repeat(4,1fr)}
-  .grid-10{grid-template-columns:repeat(7,1fr)}
-  .logo{font-size:19px}
-  .hero h2{font-size:22px}
-  .hero p{font-size:14px}
-  .stat-num{font-size:26px}
-  .cell-big{font-size:24px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;font-family:"Nunito","Comic Sans MS",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:linear-gradient(135deg,#fff5f5 0%,#fffbe6 30%,#f0fff4 60%,#e6f7ff 100%);min-height:100vh;color:#445}
+#app{max-width:900px;margin:0 auto;padding:14px;}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-radius:20px;box-shadow:0 6px 20px rgba(0,0,0,.08);margin-bottom:14px;position:sticky;top:8px;z-index:50;border:1px solid rgba(255,255,255,.8)}
+.topbar h1{font-size:22px;margin:0;background:linear-gradient(90deg,#ff6b6b,#feca57,#48dbfb,#ff9ff3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;letter-spacing:0px;text-shadow:none}
+.topbar .btns{display:flex;gap:8px;align-items:center}
+.btn{font-size:13px;padding:8px 14px;border-radius:24px;border:none;background:linear-gradient(135deg,#ffecd2 0%,#fcb69f 100%);color:#b35a2b;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-weight:800;box-shadow:0 3px 8px rgba(252,182,159,.4);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.95);opacity:.9}
+.homeBtn{display:none;font-size:13px;padding:8px 14px;border-radius:24px;border:none;background:linear-gradient(135deg,#ff9a9e 0%,#fecfef 100%);color:#a8324e;cursor:pointer;font-weight:800;box-shadow:0 3px 8px rgba(255,154,158,.35);transition:transform .15s}
+.homeBtn:hover{transform:translateY(-2px)}
+.statBox{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.statCard{border-radius:20px;padding:14px 8px;text-align:center;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.08);border:2px solid rgba(255,255,255,.7);transition:transform .2s}
+.statCard:nth-child(1){background:linear-gradient(135deg,#a8edea 0%,#fed6e3 100%);color:#2a5d5a}
+.statCard:nth-child(2){background:linear-gradient(135deg,#ffecd2 0%,#fcb69f 100%);color:#8b4a26}
+.statCard:nth-child(3){background:linear-gradient(135deg,#d299c2 0%,#fef9d7 100%);color:#5a2d52}
+.statCard:nth-child(4){background:linear-gradient(135deg,#89f7fe 0%,#66a6ff 100%);color:#1a3c6e}
+.statCard b{display:block;font-size:24px;margin-bottom:2px;font-weight:900}
+.statCard span{font-size:11px;font-weight:800;opacity:.9}
+.statCard:active{transform:scale(.96)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}
+.card{border-radius:24px;padding:18px 12px;text-align:center;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 24px rgba(0,0,0,.08);border:2px solid rgba(255,255,255,.7);position:relative;overflow:hidden;background:#fff}
+.card::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.7) 0%,rgba(255,255,255,0) 50%);pointer-events:none}
+.card:nth-child(1){background:linear-gradient(135deg,#ff9a9e 0%,#fecfef 100%)}
+.card:nth-child(2){background:linear-gradient(135deg,#a8edea 0%,#fed6e3 100%)}
+.card:nth-child(3){background:linear-gradient(135deg,#ffecd2 0%,#fcb69f 100%)}
+.card:nth-child(4){background:linear-gradient(135deg,#d299c2 0%,#fef9d7 100%)}
+.card:nth-child(5){background:linear-gradient(135deg,#89f7fe 0%,#66a6ff 100%)}
+.card:nth-child(6){background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%)}
+.card:nth-child(7){background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%)}
+.card:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 12px 30px rgba(0,0,0,.12)}
+.card:active{transform:scale(.97)}
+.card .emoji{font-size:56px;line-height:1.1;margin-bottom:8px;filter:drop-shadow(0 3px 6px rgba(0,0,0,.15));display:block;animation:float 3s ease-in-out infinite}
+.card .title{font-size:16px;font-weight:900;color:#2a2a3a;margin-bottom:4px;position:relative;z-index:1}
+.card .sub{font-size:12px;color:#556;position:relative;z-index:1;font-weight:700}
+.stageCards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:12px}
+.stageCard{background:linear-gradient(135deg,#fff 0%,#f8f9ff 100%);border-radius:22px;padding:20px 14px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.08);cursor:pointer;border:2px solid rgba(255,255,255,.7);transition:transform .2s,box-shadow .2s;background:#fff}
+.stageCard:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.1)}
+.stageCard:active{transform:scale(.95)}
+.stageCard .emoji{font-size:56px;margin-bottom:6px;filter:drop-shadow(0 3px 6px rgba(0,0,0,.12));display:block;animation:float 3s ease-in-out infinite}
+.stageCard .title{font-size:16px;font-weight:900;color:#334}
+.pageTitle{font-size:24px;font-weight:900;margin:14px 0 16px;text-align:center;background:linear-gradient(90deg,#ff6b6b,#feca57,#48dbfb,#ff9ff3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px}
+.tabs{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;margin-bottom:14px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;padding:10px 20px;background:rgba(255,255,255,.85);border-radius:30px;border:2px solid rgba(0,0,0,.06);font-size:14px;color:#556;cursor:pointer;white-space:nowrap;font-weight:800;box-shadow:0 3px 8px rgba(0,0,0,.06);transition:all .2s}
+.tab.on{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;border-color:transparent;box-shadow:0 6px 16px rgba(102,126,234,.4);transform:scale(1.05)}
+.tab:hover:not(.on){background:#fff;transform:translateY(-2px)}
+.listItem{background:rgba(255,255,255,.95);border-radius:20px;padding:16px 18px;margin-bottom:12px;box-shadow:0 6px 18px rgba(0,0,0,.06);cursor:pointer;border-left:6px solid transparent;transition:transform .15s,box-shadow .15s;border:2px solid rgba(255,255,255,.7)}
+.listItem:nth-child(4n+1){border-left-color:#ff6b6b}
+.listItem:nth-child(4n+2){border-left-color:#48dbfb}
+.listItem:nth-child(4n+3){border-left-color:#feca57}
+.listItem:nth-child(4n+4){border-left-color:#ff9ff3}
+.listItem:hover{transform:translateX(4px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.listItem:active{transform:scale(.99)}
+.listItem .line1{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.listItem .name{font-size:16px;font-weight:900;color:#2a2a3a}
+.listItem .emoji{font-size:32px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.1))}
+.listItem .desc{font-size:14px;color:#567;margin-top:8px;line-height:1.7;font-weight:600}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}
+.modal.active{display:flex}
+.modalBox{background:rgba(255,255,255,.98);border-radius:28px 28px 0 0;width:100%;max-width:640px;max-height:85vh;overflow:auto;padding:24px 20px 32px;animation:slideUp .3s ease-out;box-shadow:0 -10px 40px rgba(0,0,0,.15);border-top:3px solid rgba(255,255,255,.8)}
+@keyframes slideUp{from{transform:translateY(80px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-10px)}40%{transform:translateX(10px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
+@keyframes bounceIn{0%{transform:scale(.3);opacity:0}50%{transform:scale(1.05)}70%{transform:scale(.9)}100%{transform:scale(1);opacity:1}}
+@keyframes popIn{0%{transform:scale(0) rotate(-45deg)}80%{transform:scale(1.1) rotate(5deg)}100%{transform:scale(1) rotate(0deg)}}
+.modalTitle{font-size:20px;font-weight:900;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;color:#333}
+.modalClose{background:linear-gradient(135deg,#f1f5f9 0%,#e2e8f0 100%);border:none;border-radius:14px;width:40px;height:40px;font-size:18px;cursor:pointer;color:#445;box-shadow:0 2px 6px rgba(0,0,0,.1);font-weight:900}
+.qaBox{background:linear-gradient(135deg,#f0f7ff 0%,#fff0f5 100%);border-radius:20px;padding:18px;margin:14px 0;text-align:center;font-size:18px;box-shadow:inset 0 3px 10px rgba(0,0,0,.04);border:2px dashed #c7d2fe}
+.qaBox .q{font-size:26px;font-weight:900;margin-bottom:16px;background:linear-gradient(90deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px}
+.ansGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.ansBtn{background:#fff;border:3px solid #e2e8f0;border-radius:18px;padding:16px 10px;text-align:center;cursor:pointer;font-size:22px;min-height:60px;font-weight:900;color:#334;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:all .15s}
+.ansBtn:hover{transform:translateY(-3px);border-color:#cbd5e1;box-shadow:0 6px 16px rgba(0,0,0,.1)}
+.ansBtn.right{border-color:#1dd1a1;background:linear-gradient(135deg,#e6fff6 0%,#d0fcee 100%);color:#0d7a5a;transform:scale(1.08);box-shadow:0 6px 20px rgba(29,209,161,.25)}
+.ansBtn.wrong{border-color:#ff6b6b;background:linear-gradient(135deg,#fff0f0 0%,#ffe0e0 100%);color:#a83232;animation:shake .4s ease-in-out}
+.progBar{height:14px;background:#eaf2ff;border-radius:10px;overflow:hidden;margin:12px 0;box-shadow:inset 0 2px 5px rgba(0,0,0,.08)}
+.progBar i{display:block;height:100%;background:linear-gradient(90deg,#ff6b6b,#feca57,#48dbfb,#ff9ff3);border-radius:10px;transition:width .4s;box-shadow:0 0 12px rgba(102,126,234,.3)}
+.planRow{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-size:13px;color:#567;font-weight:700}
+.planRow input{width:72px;padding:10px;border-radius:12px;border:2px solid #ddd;font-size:14px;background:rgba(255,255,255,.9);font-weight:800;text-align:center}
+.progressRow{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:13px;color:#567;font-weight:700}
+.groupTitle{font-size:15px;font-weight:900;color:#445;margin:18px 0 10px;padding-left:12px;border-left:6px solid #ff6b6b;letter-spacing:.5px}
+.empty{text-align:center;color:#789;padding:40px 0;font-size:15px;font-weight:700}
+.celebrate{position:fixed;inset:0;z-index:200;pointer-events:none;display:flex;align-items:center;justify-content:center;flex-direction:column;}
+.celebrate .big{font-size:100px;animation:popIn .6s cubic-bezier(.175,.885,.32,1.275);filter:drop-shadow(0 6px 20px rgba(0,0,0,.2))}
+.celebrate .text{font-size:22px;font-weight:900;margin-top:12px;color:#ff6b6b;text-shadow:0 2px 8px rgba(0,0,0,.15);animation:bounceIn .5s}
+.numGrid{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+.numChip{width:64px;height:72px;border-radius:16px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;flex-direction:column;font-size:22px;font-weight:900;color:#2a6edb;cursor:pointer;border:2px solid rgba(255,255,255,.8);transition:transform .15s}
+.numChip:hover{transform:translateY(-4px) scale(1.1);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.numChip .emoji{font-size:24px}
+.numChip .num{font-size:14px;color:#667}
+.charGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:12px}
+.charCard{background:#fff;border-radius:20px;padding:14px 6px;text-align:center;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.08);border:2px solid rgba(255,255,255,.7);transition:transform .2s}
+.charCard:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 10px 28px rgba(0,0,0,.12)}
+.charCard:active{transform:scale(.95)}
+.charCard .char{font-size:42px;font-weight:900;color:#2a2a3a;margin-bottom:4px}
+.charCard .pinyin{font-size:13px;color:#667;font-weight:700;margin-bottom:2px}
+.charCard .emoji{font-size:28px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.1))}
+.pageNav{display:flex;justify-content:center;align-items:center;gap:10px;margin:18px 0}
+.pageBtn{padding:8px 16px;border-radius:14px;border:none;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;font-weight:800;font-size:13px;cursor:pointer;box-shadow:0 4px 12px rgba(102,126,234,.3);transition:transform .15s}
+.pageBtn:disabled{opacity:.4;cursor:not-allowed;transform:none !important;box-shadow:none}
+.pageBtn:hover:not(:disabled){transform:translateY(-2px)}
+.pageInfo{font-size:13px;color:#667;font-weight:800}
+@media (max-width:640px){
+  #app{padding:10px}
+  .topbar{top:0;border-radius:0 0 20px 20px;margin:-10px -10px 12px;padding:10px 14px}
+  .topbar h1{font-size:18px}
+  .btn,.homeBtn{padding:7px 12px;font-size:12px;border-radius:20px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .card{padding:14px 8px;border-radius:22px}
+  .card .emoji{font-size:48px}
+  .card .title{font-size:14px}
+  .stageCards{grid-template-columns:repeat(2,1fr);gap:10px}
+  .statCard b{font-size:20px}
+  .statCard{padding:10px 6px;border-radius:18px}
+  .ansGrid{gap:10px}
+  .ansBtn{padding:14px 8px;font-size:20px;min-height:56px;border-radius:16px}
+  .modalBox{max-height:88vh;padding:20px 16px 28px;border-radius:26px 26px 0 0}
+  .listItem{padding:14px 16px;border-radius:18px}
+  .tabs{gap:8px}
+  .tab{padding:8px 16px;font-size:13px}
+  .charGrid{grid-template-columns:repeat(3,1fr);gap:10px}
+  .charCard .char{font-size:36px}
+  .numChip{width:52px;height:60px;font-size:18px;border-radius:14px}
+  .qaBox .q{font-size:22px}
 }
-
-@media(min-width:720px){
-  .grid{grid-template-columns:repeat(4,1fr)}
-  .grid-5{grid-template-columns:repeat(5,1fr)}
-  .grid-10{grid-template-columns:repeat(10,1fr)}
-  .main{padding:16px 24px}
-  .subj{padding:16px;font-size:15px}
-  .hero h2{font-size:24px}
-  .hero p{font-size:14px}
-  .logo{font-size:20px}
-  .quiz{font-size:34px}
-  .cell{min-height:72px;padding:8px}
-  .stat-row{display:flex;justify-content:space-around;gap:8px}
-  .modal-overlay{align-items:center;padding:14px}
-  .modal-sheet{border-radius:28px;max-width:520px;max-height:80vh;animation:pop .3s ease}
-}
-
 </style>
 </head>
 <body>
-<div class="topbar">
-  <div class="logo">儿童启蒙万花筒</div>
-  <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end">
-    <button class="home-btn" id="homeBtn" onclick="renderHome()" style="display:none">🏠 返回首页</button>
-    <div class="stage">
-    <button id="btnS2" class="stage-btn on" onclick="goStage('s2')">2-4岁</button>
-    <button id="btnS4" class="stage-btn" onclick="goStage('s4')">4-6岁</button>
-    <button class="lang-btn" onclick="toggleLang()">中/EN</button>
-  </div>
-</div>
-</div>
-<div class="main">
-  <div class="hero" id="hero"><h2>欢迎来到儿童启蒙万花筒</h2><p>数学·语文·英语·百科·地理·历史·宇宙，一路探索吧！</p></div>
-
-  <div class="stat-board" id="statBoard">
-    <div class="stat-row">
-      <div class="stat-box"><div class="stat-num" id="totalCount">0</div><div class="stat-label" id="lblTotal">总学习数</div></div>
-      <div class="stat-box"><div class="stat-num" id="todayCount">0</div><div class="stat-label" id="lblToday">今日已学</div></div>
-      <div class="stat-box"><div class="stat-num" id="planGoal">20</div><div class="stat-label" id="lblPlan">每日计划</div></div>
-    </div>
-    <div class="plan-bar-wrap">
-      <div class="plan-bar" id="planBar"></div>
-      <div class="plan-text" id="planText">计划进度 0/20</div>
-    </div>
-    <div class="today-list" id="todayList"></div>
-    <div class="plan-set"><button onclick="setPlanPrompt()">设定每日目标</button></div>
-  </div>
-
-  <div class="grid" id="subGrid"></div>
-  <div id="tabArea"></div>
-  <div id="content"></div>
-</div>
-<div class="footer">用声音和好奇心学习世界 · 中英双语随时切换</div>
+<div id="app"></div>
+<div id="quizModal" class="modal" onclick="if(event.target===this)closeMathQuiz()"><div class="modalBox" id="quizBox"></div></div>
+<div id="historyModal" class="modal" onclick="if(event.target===this)closeHistory()"><div class="modalBox" id="historyBox"></div></div>
 <script>
-const I18N={
-  zh:{subjects:['语文王国','数学王国','英语王国','百科王国','地理王国','历史王国','宇宙王国'],math:{add:'趣味加法',sub:'趣味减法',count:'快乐数数',shape:'形状认知',size:'大小比较',color:'颜色分类',next:'下一题',finish:'完成啦',correct:'答对啦！真棒！',wrong:'再想想~',choose:'选择难度等级',planed:'已完成'},chinese:{numbers:'快乐数字',hanzi:'认汉字',poems:'古诗',songs:'儿歌',stories:'故事',fables:'寓言'},english:{letters:'字母',words:'单词',phrases:'短语',sentences:'句子',enStories:'英语故事'},science:{animals:'动物世界',plants:'植物世界',transport:'交通工具',daily:'日常物品',common:'常识'},geo:{landforms:'地形',scenery:'风景',rivers:'山河'},history:{dynasties:'朝代',emperors:'帝王',cultureIn:'文化'},space:{origin:'宇宙起源',solar:'太阳系',earth:'地球奥秘'}},
-  en:{subjects:['Chinese','Math','English','Science','Geography','History','Space'],math:{add:'Addition',sub:'Subtraction',count:'Counting',shape:'Shapes',size:'Size',color:'Colors',next:'Next',finish:'Finished!',correct:'Great job!',wrong:'Try again',choose:'Choose a level',planed:'Done'},chinese:{numbers:'Numbers',hanzi:'Characters',poems:'Poems',songs:'Songs',stories:'Stories',fables:'Fables'},english:{letters:'Letters',words:'Words',phrases:'Phrases',sentences:'Sentences',enStories:'Stories'},science:{animals:'Animals',plants:'Plants',transport:'Transport',daily:'Daily',common:'Common'},geo:{landforms:'Landforms',scenery:'Scenery',rivers:'Rivers'},history:{dynasties:'Dynasties',emperors:'Emperors',cultureIn:'Culture'},space:{origin:'Origin',solar:'Solar System',earth:'Earth'}}
-};
-let lang='zh',curStage='s2',curSubj='',curTab='';
-function $(id){return document.getElementById(id)}
-function goStage(stage){curStage=stage;$('btnS2').className='stage-btn'+(stage==='s2'?' on':'');$('btnS4').className='stage-btn'+(stage==='s4'?' on':'');if(curSubj){renderSubject(curSubj,curStage)}else{renderHome()}}
-function toggleLang(){lang=lang==='zh'?'en':'zh';if(curSubj){renderSubject(curSubj,curStage)}else{renderHome()}updateStatsUI();}
-function t(k,s){if(!s){const e=I18N[lang].math[k];return e||k}const e=I18N[lang][s]&&I18N[lang][s][k];return e||k}
+const EMOJI_MAP={'🦢':'天鹅','🌙':'月亮','🛏':'床','❄':'雪花','🦅':'鹰','⛰':'山','❤':'爱心','🦌':'鹿','🌿':'草木','🪷':'莲花','⭐':'星星','🐯':'老虎','🦆':'鸭子','🐦':'燕子','🥕':'萝卜','🐇':'兔子','📰':'报纸','👩':'妈妈','🐢':'乌龟','🦊':'狐狸','🍇':'葡萄','🐺':'狼','💧':'水','🪣':'水桶','🐸':'青蛙','🌾':'禾苗','🦗':'蟋蟀','🐰':'兔子','🦚':'孔雀','🍐':'梨','🪨':'石头','⚖':'秤','🪡':'针','🐓':'公鸡','🔔':'铃铛','🍎':'苹果','🐍':'蛇','🐘':'大象','🦁':'狮子','🌹':'玫瑰','🌻':'向日葵','🌵':'仙人掌','🍁':'枫叶','🌍':'地球','🏔':'山峰','🏰':'城堡','🗼':'铁塔','🗽':'自由女神','🌊':'海洋','🏯':'故宫','🧱':'长城','🗿':'兵马俑','🏠':'房子','🍜':'面条','🥟':'饺子','🧧':'红包','🎏':'风筝','🎆':'烟花','👑':'国王','⚔':'宝剑','🐎':'马','📖':'书本','🖌':'毛笔','📜':'卷轴','🐉':'龙','☀':'太阳','🌕':'月亮','🪐':'土星','🚀':'火箭','🛸':'飞碟','🛰':'卫星','👨\u200d🚀':'宇航员','🌌':'银河','🔭':'望远镜','🧮':'算盘','➕':'加号','➖':'减号','✖':'乘号','➗':'除号','🔢':'数字','📐':'三角尺','📏':'尺子','🔴':'红球','🔵':'蓝球','🟢':'绿球','🟡':'黄球','🟠':'橙球','🟣':'紫球'};
+function em2text(s){return s.replace(/[\u{1F300}-\u{1F6FF}\u{1F900}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/gu,m=>EMOJI_MAP[m]||m);}
+const synth=window.speechSynthesis;
+let S={lang:'zh-CN',stage:'2',today:[],total:0,plan:20,records:[],subject:'',tab:'',page:0};
+const I18N={zh:{homeTitle:'欢迎来到启蒙乐园',stage2:'2-4岁',stage4:'4-6岁',chinese:'语文王国',math:'数学王国',english:'英语王国',science:'百科王国',geo:'地理王国',history:'历史王国',space:'宇宙王国',changeStage:'切换阶段',changeLang:'English',backHome:'返回首页',totalLearn:'总学习数',todayLearn:'今日已学',dailyPlan:'每日计划',progress:'今日进度',setPlan:'设置目标',poems:'古诗',rhymes:'儿歌',fables:'寓言',stories:'故事',characters:'汉字',todayTag:'今日标签',letters:'字母',words:'单词',phrases:'短语',sentences:'句子',numbers:'数字',arithmetic:'算术',cognition:'趣味认知',continents:'大洲',countries:'国家',landmarks:'地标',china:'中国',animals:'动物',plants:'植物',common:'常识',solar:'太阳系',stars:'星星',galaxy:'星系',exploration:'探索',dynasties:'朝代',figures:'人物',events:'事件'},en:{homeTitle:'Welcome to Kids World',stage2:'Ages 2-4',stage4:'Ages 4-6',chinese:'Chinese',math:'Math Kingdom',english:'English',science:'Science',geo:'Geography',history:'History',space:'Space',changeStage:'Switch Stage',changeLang:'中文',backHome:'Home',totalLearn:'Total Learned',todayLearn:'Today Learned',dailyPlan:'Daily Goal',progress:'Progress',setPlan:'Set Goal',poems:'Poems',rhymes:'Rhymes',fables:'Fables',stories:'Stories',characters:'Characters',todayTag:'Today Tags',letters:'Letters',words:'Words',phrases:'Phrases',sentences:'Sentences',numbers:'Numbers',arithmetic:'Arithmetic',cognition:'Fun Cognition',continents:'Continents',countries:'Countries',landmarks:'Landmarks',china:'China',animals:'Animals',plants:'Plants',common:'Common Sense',solar:'Solar System',stars:'Stars',galaxy:'Galaxy',exploration:'Exploration',dynasties:'Dynasties',figures:'Figures',events:'Events'}};
+function t(k){return I18N[S.lang==='en'?'en':'zh'][k]||k;}
+function toggleLang(){S.lang=S.lang==='zh'?'en':'zh';save();renderHome();}
+function save(){localStorage.setItem('kidsStats',JSON.stringify({today:S.today,total:S.total,plan:S.plan,records:S.records,date:new Date().toDateString()}));}
+function load(){try{const d=JSON.parse(localStorage.getItem('kidsStats')||'{}');if(d.date===new Date().toDateString()){S.today=d.today||[];S.total=d.total||0;S.plan=d.plan||20;S.records=d.records||[];}else{S.today=[];S.total=d.total||0;S.plan=d.plan||20;S.records=d.records||[];}}catch(e){}}
+function record(o){S.today.push({...o,t:new Date().toLocaleTimeString()});S.total++;S.records.unshift({...o,date:new Date().toLocaleString()});if(S.records.length>200)S.records.pop();save();updateStatsUI();}
+function updateStatsUI(){const set=(id,v)=>{const el=document.getElementById(id);if(el)el.innerText=v;};const prog=Math.min(100,Math.round((S.today.length/S.plan)*100));set('stTotal',S.total);set('stToday',S.today.length);set('stPlan',S.plan);set('stProgText',prog+'%');const bar=document.getElementById('stProg');if(bar)bar.style.width=prog+'%';const tags=document.getElementById('stTags');if(tags){const subjects=[...new Set(S.today.map(x=>x.subject).filter(Boolean))];tags.innerText=subjects.join('、')||'-';}}
+function speak(text){if(!synth)return;synth.cancel();const u=new SpeechSynthesisUtterance(em2text(text));u.lang='zh-CN';u.rate=0.85;u.pitch=1.18;synth.speak(u);}
+function speakEn(text){if(!synth)return;synth.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=0.9;u.pitch=1.1;synth.speak(u);}
+function speakBoth(zh,en){if(!synth)return;synth.cancel();const u1=new SpeechSynthesisUtterance(en);u1.lang='en-US';u1.rate=0.9;u1.pitch=1.1;const u2=new SpeechSynthesisUtterance(em2text(zh));u2.lang='zh-CN';u2.rate=0.85;u2.pitch=1.18;u1.onend=()=>synth.speak(u2);synth.speak(u1);}
+function goStage(v){S.stage=v;save();renderHome();}
+function goHome(){S.subject='';S.tab='';S.page=0;renderHome();}
+function setPlanPrompt(){const v=prompt('设置每日计划数（1-100）',String(S.plan));if(v){const n=parseInt(v,10);if(n>0&&n<=100){S.plan=n;save();updateStatsUI();}}}
+function showHistory(){const el=document.getElementById('historyModal');el.classList.add('active');document.getElementById('historyBox').innerHTML=historyHTML();}
+function closeHistory(){document.getElementById('historyModal').classList.remove('active');}
+function historyHTML(){const g={};S.records.forEach(r=>{const d=(r.date||'').split(' ')[0]||'今';g[d]=g[d]||[];g[d].push(r);});let h='<div class="modalTitle"><span>📖 学习记录</span><button class="modalClose" onclick="closeHistory()">✕</button></div>';const days=Object.keys(g).slice(0,14);if(!days.length)return h+'<div class="empty">暂无记录，快去开启学习之旅吧！🚀</div>';days.forEach(d=>{h+=`<div class="groupTitle">📅 ${d}</div>`;g[d].forEach(r=>{h+=`<div class="listItem"><div class="line1"><span class="name">${r.title||r.name||r.q||'学习'}</span><span style="font-size:12px;color:#678">${r.t||''}</span></div><div class="desc">🎒 ${r.tag||r.subject||''}</div></div>`;});});return h;}
 
-const SUBJS=[{id:'chinese',em:'📚',cn:'语文王国',en:'Chinese'},{id:'math',em:'🔢',cn:'数学王国',en:'Math'},{id:'english',em:'🔤',cn:'英语王国',en:'English'},{id:'science',em:'🧬',cn:'百科王国',en:'Science'},{id:'geo',em:'🌍',cn:'地理王国',en:'Geography'},{id:'history',em:'🏯',cn:'历史王国',en:'History'},{id:'space',em:'🚀',cn:'宇宙王国',en:'Space'}];
-const HANZI=[{ch:'一',py:'yi',en:'one'},{ch:'二',py:'er',en:'two'},{ch:'三',py:'san',en:'three'},{ch:'四',py:'si',en:'four'},{ch:'五',py:'wu',en:'five'},{ch:'六',py:'liu',en:'six'},{ch:'七',py:'qi',en:'seven'},{ch:'八',py:'ba',en:'eight'},{ch:'九',py:'jiu',en:'nine'},{ch:'十',py:'shi',en:'ten'},{ch:'人',py:'ren',en:'person'},{ch:'口',py:'kou',en:'mouth'},{ch:'手',py:'shou',en:'hand'},{ch:'水',py:'shui',en:'water'},{ch:'火',py:'huo',en:'fire'},{ch:'木',py:'mu',en:'wood'},{ch:'日',py:'ri',en:'sun'},{ch:'月',py:'yue',en:'moon'},{ch:'田',py:'tian',en:'field'},{ch:'山',py:'shan',en:'mountain'},{ch:'石',py:'shi',en:'stone'},{ch:'上',py:'shang',en:'up'},{ch:'下',py:'xia',en:'down'},{ch:'大',py:'da',en:'big'},{ch:'小',py:'xiao',en:'small'},{ch:'天',py:'tian',en:'sky'},{ch:'地',py:'di',en:'earth'},{ch:'风',py:'feng',en:'wind'},{ch:'雨',py:'yu',en:'rain'},{ch:'雪',py:'xue',en:'snow'},{ch:'春',py:'chun',en:'spring'},{ch:'夏',py:'xia',en:'summer'},{ch:'秋',py:'qiu',en:'autumn'},{ch:'冬',py:'dong',en:'winter'},{ch:'花',py:'hua',en:'flower'},{ch:'草',py:'cao',en:'grass'},{ch:'鸟',py:'niao',en:'bird'},{ch:'鱼',py:'yu',en:'fish'},{ch:'虫',py:'chong',en:'insect'},{ch:'马',py:'ma',en:'horse'},{ch:'牛',py:'niu',en:'cow'},{ch:'羊',py:'yang',en:'sheep'},{ch:'狗',py:'gou',en:'dog'},{ch:'猫',py:'mao',en:'cat'},{ch:'爸',py:'ba',en:'dad'},{ch:'妈',py:'ma',en:'mom'},{ch:'哥',py:'ge',en:'brother'},{ch:'姐',py:'jie',en:'sister'},{ch:'我',py:'wo',en:'me'},{ch:'你',py:'ni',en:'you'},{ch:'好',py:'hao',en:'good'},{ch:'爱',py:'ai',en:'love'},{ch:'心',py:'xin',en:'heart'},{ch:'米',py:'mi',en:'rice'}];
-const HANZI_EXT='米处机分力量孩家头见电电车船当飞高个果园过和河红后几己叫姐金今进九开看三声师十是的时书水说四他她太天听同童装望位问五想小学雪叶义因用有雨远看衣医友又云在怎正只看到走住桌做坐昨坐最左了'.split('');
-const POEMS=[{title:'静夜思',author:'唐 李白',content:'床前明月光，疑是地上霜。举头望明月，低头思故乡。'},{title:'春晓',author:'唐 孟浩然',content:'春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。'},{title:'咏鹅',author:'唐 骆宾王',content:'鹅鹅鹅，曲项向天歌。白毛浮绿水，红掌拨清波。'},{title:'悯农',author:'唐 李绅',content:'锄禾日当午，汗滴禾下土。谁知盘中餐，粒粒皆辛苦。'},{title:'登鹳雀楼',author:'唐 王之涣',content:'白日依山尽，黄河入海流。欲穷千里目，更上一层楼。'},{title:'望庐山瀑布',author:'唐 李白',content:'日照香炉生紫烟，遥看瀑布挂前川。飞流直下三千尺，疑是银河落九天。'},{title:'绝句',author:'唐 杜甫',content:'两个黄鹂鸣翠柳，一行白鹭上青天。窗含西岭千秋雪，门泊东吴万里船。'},{title:'江雪',author:'唐 柳宗元',content:'千山鸟飞绝，万径人踪灭。孤舟蓑笠翁，独钓寒江雪。'},{title:'赋得古原草送别',author:'唐 白居易',content:'离离原上草，一岁一枯荣。野火烧不尽，春风吹又生。'},{title:'游子吟',author:'唐 孟郊',content:'慈母手中线，游子身上衣。临行密密缝，意恐迟迟归。谁言寸草心，报得三春晖。'},{title:'池上',author:'唐 白居易',content:'小娃撑小艇，偷采白莲回。不解藏踪迹，浮萍一道开。'},{title:'村居',author:'清 高鼎',content:'草长莺飞二月天，拂堤杨柳醉春烟。儿童散学归来早，忙趁东风放纸鸢。'},{title:'小池',author:'宋 杨万里',content:'泉眼无声惜细流，树阴照水爱晴柔。小荷才露尖尖角，早有蜻蜓立上头。'},{title:'所见',author:'清 袁枚',content:'牧童骑黄牛，歌声振林樾。意欲捕鸣蝉，忽然闭口立。'},{title:'山行',author:'唐 杜牧',content:'远上寒山石径斜，白云深处有人家。停车坐爱枫林晚，霜叶红于二月花。'},{title:'赠汪伦',author:'唐 李白',content:'李白乘舟将欲行，忽闻岸上踏歌声。桃花潭水深千尺，不及汪伦送我情。'},{title:'望天门山',author:'唐 李白',content:'天门中断楚江开，碧水东流至此回。两岸青山相对出，孤帆一片日边来。'},{title:'饮湖上初晴后雨',author:'宋 苏轼',content:'水光潋滟晴方好，山色空蒙雨亦奇。欲把西湖比西子，淡妆浓抹总相宜。'},{title:'早发白帝城',author:'唐 李白',content:'朝辞白帝彩云间，千里江陵一日还。两岸猿声啼不住，轻舟已过万重山。'},{title:'凉州词',author:'唐 王翰',content:'葡萄美酒夜光杯，欲饮琵琶马上催。醉卧沙场君莫笑，古来征战几人回。'},{title:'出塞',author:'唐 王昌龄',content:'秦时明月汉时关，万里长征人未还。但使龙城飞将在，不教胡马度阴山。'},{title:'鹿柴',author:'唐 王维',content:'空山不见人，但闻人语响。返景入深林，复照青苔上。'},{title:'鸟鸣涧',author:'唐 王维',content:'人闲桂花落，夜静春山空。月出惊山鸟，时鸣春涧中。'},{title:'相思',author:'唐 王维',content:'红豆生南国，春来发几枝。愿君多采撷，此物最相思。'},{title:'寻隐者不遇',author:'唐 贾岛',content:'松下问童子，言师采药去。只在此山中，云深不知处。'},{title:'画',author:'唐 王维',content:'远看山有色，近听水无声。春去花还在，人来鸟不惊。'},{title:'回乡偶书',author:'唐 贺知章',content:'少小离家老大回，乡音无改鬓毛衰。儿童相见不相识，笑问客从何处来。'},{title:'九月九日忆山东兄弟',author:'唐 王维',content:'独在异乡为异客，每逢佳节倍思亲。遥知兄弟登高处，遍插茱萸少一人。'},{title:'敕勒歌',author:'北朝民歌',content:'敕勒川，阴山下。天似穹庐，笼盖四野。天苍苍，野茫茫，风吹草低见牛羊。'},{title:'江南',author:'汉乐府',content:'江南可采莲，莲叶何田田。鱼戏莲叶间。鱼戏莲叶东，鱼戏莲叶西，鱼戏莲叶南，鱼戏莲叶北。'}];
-const SONGS=[{title:'小白兔',content:'小白兔白又白，两只耳朵竖起来，爱吃萝卜和青菜，蹦蹦跳跳真可爱。'},{title:'小星星',content:'一闪一闪亮晶晶，满天都是小星星，挂在天上放光明，好像许多小眼睛。'},{title:'两只老虎',content:'两只老虎两只老虎，跑得快跑得快，一只没有耳朵一只没有尾巴，真奇怪真奇怪。'},{title:'小燕子',content:'小燕子穿花衣，年年春天来这里，我问燕子为啥来，燕子说这里的春天最美丽。'},{title:'拔萝卜',content:'拔萝卜拔萝卜，嘿哟嘿哟拔萝卜，老太婆快快来，快来帮我们拔萝卜。'},{title:'小毛驴',content:'我有一只小毛驴，我从来也不骑。'},{title:'数鸭子',content:'门前大桥下游过一群鸭，快来快来数一数，二四六七八。'},{title:'找朋友',content:'找呀找呀找朋友，找到一个好朋友，敬个礼呀握握手，你是我的好朋友。'},{title:'小青蛙',content:'小青蛙呱呱呱，水里游岸上爬，吃害虫保庄稼，人人都要保护它。'},{title:'小蜜蜂',content:'小蜜蜂嗡嗡嗡，飞到西飞到东，传花粉采花蜜，我们学它爱劳动。'},{title:'卖报歌',content:'啦啦啦我是卖报的小行家，不等天明去等派报。'},{title:'泥娃娃',content:'泥娃娃泥娃娃，一个泥娃娃，也有那眉毛也有那眼睛，眼睛不会眨。'},{title:'蜗牛与黄鹂鸟',content:'阿门阿前一棵葡萄树，阿嫩阿嫩绿地刚发芽，蜗牛背着那重重的壳呀，一步一步地往上爬。'},{title:'上学歌',content:'太阳当空照花儿对我笑，小鸟说早早早，你为什么背上小书包。'},{title:'丢手绢',content:'丢丢丢手绢，轻轻地放在小朋友的后面，大家不要告诉他，快点快点抓住他。'},{title:'一分钱',content:'我在马路边捡到一分钱，把它交到警察叔叔手里边。'},{title:'摇篮曲',content:'月儿明风儿静，树叶儿遮窗棂。'},{title:'捉泥鳅',content:'池塘的水满了雨也停了，田边的稀泥里到处是泥鳅。'},{title:'采蘑菇的小姑娘',content:'采蘑菇的小姑娘，背着一个大竹筐。'},{title:'上学去',content:'太阳公公起得早，小宝宝背着书包上学校。'}];
-const FABLES=[{title:'乌鸦喝水',content:'乌鸦口渴了，到处找水喝。它看见瓶子里有水，可是瓶子太高够不着。乌鸦叼来小石子放进瓶里，水面升高了，终于喝到水了！'},{title:'龟兔赛跑',content:'乌龟和兔子比赛。兔子跑得快，就在路边睡着了。乌龟一直慢慢爬，最后第一个到达终点。'},{title:'狐假虎威',content:'狐狸被老虎抓住了，说我是百兽之王，不信你跟在我后面走一圈。动物们见到老虎都吓跑了，狐狸很得意。'},{title:'守株待兔',content:'农夫在田里干活，一只兔子撞到树桩死了。他每天守着树桩等兔子，田地荒芜了，再也没等到。'},{title:'揠苗助长',content:'农夫嫌禾苗长得慢，把它们一棵棵拔高，结果禾苗全都枯萎了。'},{title:'农夫与蛇',content:'冬天农夫救了一条冻僵的蛇，放在怀里取暖。蛇醒来后咬了农夫一口，农夫死了。'},{title:'对牛弹琴',content:'音乐家对着牛弹琴，牛只顾吃草不理他。'},{title:'画蛇添足',content:'一个人最快画好蛇，却给蛇添上脚，结果输了比赛。'},{title:'井底之蛙',content:'青蛙住在井里，觉得天只有井口那么大。海龟告诉它大海有多辽阔。'},{title:'盲人摸象',content:'盲人想知道大象长什么样，摸到不同部位说不同形状，吵了起来。'},{title:'南辕北辙',content:'一个人要去南方却驾车往北走，条件越好离目标越远。'},{title:'掩耳盗铃',content:'小偷想偷钟，捂住自己耳朵去搬，结果被人发现抓了。'},{title:'叶公好龙',content:'叶公到处画龙刻龙，真龙来了却吓得拔腿就跑。'},{title:'亡羊补牢',content:'羊圈破了丢了羊，邻居劝他修补。他又丢了一只才补上，再没丢羊。'},{title:'买椟还珠',content:'一个人买了装珍珠的盒子，却觉得盒子更漂亮，把珍珠还了只留下空盒子。'},{title:'刻舟求剑',content:'坐船时把剑掉水里，他在船边刻记号，船靠岸后沿记号下水找，当然找不到。'}];
-const ABC='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-const EWORDS={
-  body:[{w:'head',t:'头'},{w:'eye',t:'眼睛'},{w:'nose',t:'鼻子'},{w:'mouth',t:'嘴巴'},{w:'ear',t:'耳朵'},{w:'hand',t:'手'},{w:'finger',t:'手指'},{w:'leg',t:'腿'},{w:'foot',t:'脚'},{w:'hair',t:'头发'}],
-  family:[{w:'mom',t:'妈妈'},{w:'dad',t:'爸爸'},{w:'brother',t:'兄弟'},{w:'sister',t:'姐妹'},{w:'grandma',t:'奶奶'},{w:'grandpa',t:'爷爷'},{w:'friend',t:'朋友'},{w:'teacher',t:'老师'}],
-  color:[{w:'red',t:'红色'},{w:'blue',t:'蓝色'},{w:'yellow',t:'黄色'},{w:'green',t:'绿色'},{w:'orange',t:'橙色'},{w:'purple',t:'紫色'},{w:'pink',t:'粉色'},{w:'black',t:'黑色'},{w:'white',t:'白色'},{w:'brown',t:'棕色'}],
-  animal:[{w:'cat',t:'猫'},{w:'dog',t:'狗'},{w:'bird',t:'鸟'},{w:'fish',t:'鱼'},{w:'rabbit',t:'兔子'},{w:'duck',t:'鸭子'},{w:'tiger',t:'老虎'},{w:'lion',t:'狮子'},{w:'elephant',t:'大象'},{w:'monkey',t:'猴子'},{w:'horse',t:'马'},{w:'cow',t:'奶牛'},{w:'bear',t:'熊'},{w:'panda',t:'熊猫'},{w:'bee',t:'蜜蜂'},{w:'frog',t:'青蛙'},{w:'butterfly',t:'蝴蝶'},{w:'chicken',t:'鸡'},{w:'mouse',t:'老鼠'},{w:'pig',t:'猪'}],
-  fruit:[{w:'apple',t:'苹果'},{w:'banana',t:'香蕉'},{w:'orange',t:'橙子'},{w:'grape',t:'葡萄'},{w:'strawberry',t:'草莓'},{w:'pear',t:'梨'},{w:'peach',t:'桃子'},{w:'watermelon',t:'西瓜'},{w:'mango',t:'芒果'},{w:'cherry',t:'樱桃'},{w:'lemon',t:'柠檬'},{w:'kiwi',t:'猕猴桃'}],
-  food:[{w:'rice',t:'米饭'},{w:'noodle',t:'面条'},{w:'bread',t:'面包'},{w:'egg',t:'鸡蛋'},{w:'milk',t:'牛奶'},{w:'water',t:'水'},{w:'juice',t:'果汁'},{w:'cake',t:'蛋糕'},{w:'cookie',t:'饼干'},{w:'candy',t:'糖果'},{w:'ice cream',t:'冰淇淋'},{w:'meat',t:'肉'}],
-  number:[{w:'one',t:'一'},{w:'two',t:'二'},{w:'three',t:'三'},{w:'four',t:'四'},{w:'five',t:'五'},{w:'six',t:'六'},{w:'seven',t:'七'},{w:'eight',t:'八'},{w:'nine',t:'九'},{w:'ten',t:'十'},{w:'twenty',t:'二十'},{w:'hundred',t:'一百'}],
-  nature:[{w:'sun',t:'太阳'},{w:'moon',t:'月亮'},{w:'star',t:'星星'},{w:'cloud',t:'云'},{w:'rain',t:'雨'},{w:'snow',t:'雪'},{w:'wind',t:'风'},{w:'tree',t:'树'},{w:'flower',t:'花'},{w:'grass',t:'草'},{w:'river',t:'河流'},{w:'mountain',t:'山'},{w:'sea',t:'大海'},{w:'sky',t:'天空'}],
-  school:[{w:'book',t:'书'},{w:'pen',t:'笔'},{w:'pencil',t:'铅笔'},{w:'bag',t:'书包'},{w:'school',t:'学校'},{w:'student',t:'学生'}],
-  vehicle:[{w:'car',t:'汽车'},{w:'bus',t:'公交车'},{w:'bike',t:'自行车'},{w:'train',t:'火车'},{w:'plane',t:'飞机'},{w:'ship',t:'轮船'},{w:'taxi',t:'出租车'},{w:'truck',t:'卡车'},{w:'rocket',t:'火箭'},{w:'subway',t:'地铁'}],
-  shape:[{w:'circle',t:'圆形'},{w:'square',t:'正方形'},{w:'triangle',t:'三角形'},{w:'heart',t:'心形'},{w:'star',t:'星形'}],
-  action:[{w:'run',t:'跑'},{w:'walk',t:'走'},{w:'jump',t:'跳'},{w:'eat',t:'吃'},{w:'drink',t:'喝'},{w:'sleep',t:'睡觉'},{w:'play',t:'玩'},{w:'read',t:'读'},{w:'write',t:'写'},{w:'sing',t:'唱歌'},{w:'dance',t:'跳舞'},{w:'swim',t:'游泳'},{w:'fly',t:'飞'},{w:'laugh',t:'笑'},{w:'cry',t:'哭'}]
+const DATA={
+chinese:{
+  poems:[
+    {t:'咏鹅',e:'Ode to the Goose',c:'鹅鹅鹅，曲项向天歌。白毛浮绿水，红掌拨清波。',emoji:'🦢'},
+    {t:'静夜思',e:'Quiet Night Thought',c:'床前明月光，疑是地上霜。举头望明月，低头思故乡。',emoji:'🌙'},
+    {t:'春晓',e:'Spring Dawn',c:'春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。',emoji:'🛏'},
+    {t:'悯农',e:'Pity the Farmers',c:'锄禾日当午，汗滴禾下土。谁知盘中餐，粒粒皆辛苦。',emoji:'🌾'},
+    {t:'登鹳雀楼',e:'Ascend Stork Tower',c:'白日依山尽，黄河入海流。欲穷千里目，更上一层楼。',emoji:'⛰'},
+    {t:'江雪',e:'River Snow',c:'千山鸟飞绝，万径人踪灭。孤舟蓑笠翁，独钓寒江雪。',emoji:'❄'},
+    {t:'寻隐者不遇',e:'Seeking the Hermit',c:'松下问童子，言师采药去。只在此山中，云深不知处。',emoji:'⛰'},
+    {t:'相思',e:'Love Seeds',c:'红豆生南国，春来发几枝。愿君多采撷，此物最相思。',emoji:'❤'},
+    {t:'鹿柴',e:'Deer Fence',c:'空山不见人，但闻人语响。返景入深林，复照青苔上。',emoji:'🦌'},
+    {t:'池上',e:'On the Pond',c:'小娃撑小艇，偷采白莲回。不解藏踪迹，浮萍一道开。',emoji:'🪷'}
+  ],
+  rhymes:[
+    {t:'小星星',e:'Twinkle Twinkle Little Star',c:'一闪一闪亮晶晶，满天都是小星星。挂在天空放光明，好像许多小眼睛。',emoji:'⭐'},
+    {t:'两只老虎',e:'Two Tigers',c:'两只老虎，两只老虎，跑得快，跑得快。一只没有耳朵，一只没有尾巴，真奇怪，真奇怪。',emoji:'🐯'},
+    {t:'数鸭子',e:'Counting Ducks',c:'门前大桥下，游过一群鸭。快来快来数一数，二四六七八。',emoji:'🦆'},
+    {t:'小燕子',e:'Little Swallow',c:'小燕子，穿花衣，年年春天来这里。我问燕子你为啥来？燕子说，这里的春天最美丽。',emoji:'🐦'},
+    {t:'拔萝卜',e:'Pull the Radish',c:'拔萝卜，拔萝卜，嗨哟嗨哟拔萝卜。嗨哟嗨哟拔不动，老婆婆，快快来，快来帮我们拔萝卜。',emoji:'🥕'},
+    {t:'小兔子乖乖',e:'Good Little Rabbit',c:'小兔子乖乖，把门儿开开，快点儿开开，我要进来。不开不开我不开，妈妈没回来，谁来也不开。',emoji:'🐇'},
+    {t:'卖报歌',e:'Newspaper Song',c:'啦啦啦，啦啦啦，我是卖报的小行家。不等天明去等派报，一面走，一面叫。',emoji:'📰'},
+    {t:'世上只有妈妈好',e:'Mom is the Best',c:'世上只有妈妈好，有妈的孩子像块宝。投进妈妈的怀抱，幸福享不了。',emoji:'👩'}
+  ],
+  fables:[
+    {t:'龟兔赛跑',e:'The Tortoise and the Hare',c:'兔子嘲笑乌龟跑得慢，要和它比赛。兔子跑了一半睡着了，乌龟慢慢走到了终点。',emoji:'🐢'},
+    {t:'狐狸和葡萄',e:'The Fox and the Grapes',c:'狐狸够不着高高的葡萄，最后只好说葡萄是酸的。',emoji:'🦊'},
+    {t:'狼来了',e:'The Boy Who Cried Wolf',c:'小孩几次大喊狼来了骗人，后来狼真的来了，却没人相信他。',emoji:'🐺'},
+    {t:'乌鸦喝水',e:'The Crow and the Pitcher',c:'乌鸦叼来石子放进瓶子里，水位升高，终于喝到了水。',emoji:'🐦'},
+    {t:'坐井观天',e:'Frog in the Well',c:'青蛙住在井底，以为天只有井口那么大。',emoji:'🐸'},
+    {t:'狐假虎威',e:'The Fox Borrows the Tiger\'s Terror',c:'狐狸借着老虎的威风吓跑了其他动物。',emoji:'🦊'},
+    {t:'守株待兔',e:'Wait for a Hare by a Stump',c:'农夫捡到一只撞死的兔子后每天守在树桩旁，田地荒芜。',emoji:'🐰'},
+    {t:'掩耳盗铃',e:'Covering One\'s Ears to Steal a Bell',c:'小偷捂住自己的耳朵去偷铃铛，以为别人也听不到。',emoji:'🔔'}
+  ],
+  stories:[
+    {t:'孔融让梨',e:'Kong Rong Shares Pears',c:'孔融四岁时挑了最小的梨，把大的留给哥哥们。',emoji:'🍐'},
+    {t:'司马光砸缸',e:'Sima Guang Breaks the Vat',c:'司马光拿起石头砸破水缸，救出了掉进去的同伴。',emoji:'🪨'},
+    {t:'曹冲称象',e:'Cao Chong Weighs an Elephant',c:'曹冲让大象上船做记号，再用石头代替称重。',emoji:'⚖'},
+    {t:'铁杵磨针',e:'Grind an Iron Rod into a Needle',c:'李白看到老婆婆磨铁棒，深受感动，从此发奋读书。',emoji:'🪡'}
+  ],
+  characters: [{char:'一',pinyin:'yī',desc:'数字1',emoji:'1️'},{char:'二',pinyin:'èr',desc:'数字2',emoji:'2️'},{char:'三',pinyin:'sān',desc:'数字3',emoji:'3️'},{char:'四',pinyin:'sì',desc:'数字4',emoji:'4️'},{char:'五',pinyin:'wǔ',desc:'数字5',emoji:'5️'},{char:'六',pinyin:'liù',desc:'数字6',emoji:'6️'},{char:'七',pinyin:'qī',desc:'数字7',emoji:'7️'},{char:'八',pinyin:'bā',desc:'数字8',emoji:'8️'},{char:'九',pinyin:'jiǔ',desc:'数字9',emoji:'9️'},{char:'十',pinyin:'shí',desc:'数字10',emoji:'🔟'},{char:'人',pinyin:'rén',desc:'人类',emoji:'👤'},{char:'大',pinyin:'dà',desc:'大小的大',emoji:'🐘'},{char:'小',pinyin:'xiǎo',desc:'小小的',emoji:'🐭'},{char:'天',pinyin:'tiān',desc:'天空',emoji:'☁️'},{char:'上',pinyin:'shàng',desc:'上面',emoji:'👆'},{char:'下',pinyin:'xià',desc:'下面',emoji:'👇'},{char:'左',pinyin:'zuǒ',desc:'左手',emoji:'⬅️'},{char:'右',pinyin:'yòu',desc:'右手',emoji:'➡️'},{char:'中',pinyin:'zhōng',desc:'中间',emoji:'🎯'},{char:'口',pinyin:'kǒu',desc:'嘴巴',emoji:'👄'},{char:'日',pinyin:'rì',desc:'太阳',emoji:'☀️'},{char:'月',pinyin:'yuè',desc:'月亮',emoji:'🌙'},{char:'水',pinyin:'shuǐ',desc:'河水',emoji:'💧'},{char:'火',pinyin:'huǒ',desc:'火焰',emoji:'🔥'},{char:'木',pinyin:'mù',desc:'木头',emoji:'🪵'},{char:'土',pinyin:'tǔ',desc:'土地',emoji:'⛰️'},{char:'山',pinyin:'shān',desc:'高山',emoji:'🏔️'},{char:'石',pinyin:'shí',desc:'石头',emoji:'🪨'},{char:'田',pinyin:'tián',desc:'田地',emoji:'🌾'},{char:'禾',pinyin:'hé',desc:'禾苗',emoji:'🌱'},{char:'米',pinyin:'mǐ',desc:'大米',emoji:'🍚'},{char:'面',pinyin:'miàn',desc:'面条',emoji:'🍜'},{char:'饭',pinyin:'fàn',desc:'米饭',emoji:'🍛'},{char:'菜',pinyin:'cài',desc:'蔬菜',emoji:'🥬'},{char:'肉',pinyin:'ròu',desc:'肉类',emoji:'🥩'},{char:'蛋',pinyin:'dàn',desc:'鸡蛋',emoji:'🥚'},{char:'奶',pinyin:'nǎi',desc:'牛奶',emoji:'🥛'},{char:'糖',pinyin:'táng',desc:'糖果',emoji:'🍬'},{char:'瓜',pinyin:'guā',desc:'西瓜',emoji:'🍉'},{char:'果',pinyin:'guǒ',desc:'水果',emoji:'🍎'},{char:'花',pinyin:'huā',desc:'花朵',emoji:'🌸'},{char:'草',pinyin:'cǎo',desc:'小草',emoji:'🌿'},{char:'树',pinyin:'shù',desc:'大树',emoji:'🌳'},{char:'叶',pinyin:'yè',desc:'树叶',emoji:'🍃'},{char:'鸟',pinyin:'niǎo',desc:'小鸟',emoji:'🐦'},{char:'鱼',pinyin:'yú',desc:'鱼儿',emoji:'🐟'},{char:'马',pinyin:'mǎ',desc:'小马',emoji:'🐴'},{char:'牛',pinyin:'niú',desc:'水牛',emoji:'🐮'},{char:'羊',pinyin:'yáng',desc:'绵羊',emoji:'🐑'},{char:'狗',pinyin:'gǒu',desc:'小狗',emoji:'🐕'},{char:'猫',pinyin:'māo',desc:'小猫',emoji:'🐱'},{char:'鸡',pinyin:'jī',desc:'公鸡',emoji:'🐓'},{char:'鸭',pinyin:'yā',desc:'鸭子',emoji:'🦆'},{char:'鹅',pinyin:'é',desc:'白鹅',emoji:'🦢'},{char:'猪',pinyin:'zhū',desc:'小猪',emoji:'🐷'},{char:'鼠',pinyin:'shǔ',desc:'老鼠',emoji:'🐭'},{char:'虎',pinyin:'hǔ',desc:'老虎',emoji:'🐯'},{char:'兔',pinyin:'tù',desc:'兔子',emoji:'🐰'},{char:'龙',pinyin:'lóng',desc:'中国龙',emoji:'🐉'},{char:'手',pinyin:'shǒu',desc:'双手',emoji:'👐'},{char:'足',pinyin:'zú',desc:'脚丫',emoji:'🦶'},{char:'头',pinyin:'tóu',desc:'头颅',emoji:'👤'},{char:'目',pinyin:'mù',desc:'眼睛',emoji:'👁️'},{char:'耳',pinyin:'ěr',desc:'耳朵',emoji:'👂'},{char:'舌',pinyin:'shé',desc:'舌头',emoji:'👅'},{char:'牙',pinyin:'yá',desc:'牙齿',emoji:'🦷'},{char:'皮',pinyin:'pí',desc:'皮肤',emoji:'🧴'},{char:'毛',pinyin:'máo',desc:'毛发',emoji:'🪶'},{char:'发',pinyin:'fà',desc:'头发',emoji:'💇'},{char:'心',pinyin:'xīn',desc:'心脏',emoji:'❤️'},{char:'王',pinyin:'wáng',desc:'国王',emoji:'👑'},{char:'玉',pinyin:'yù',desc:'美玉',emoji:'💎'},{char:'贝',pinyin:'bèi',desc:'贝壳',emoji:'🐚'},{char:'金',pinyin:'jīn',desc:'金子',emoji:'🥇'},{char:'门',pinyin:'mén',desc:'大门',emoji:'🚪'},{char:'车',pinyin:'chē',desc:'汽车',emoji:'🚗'},{char:'舟',pinyin:'zhōu',desc:'小船',emoji:'🚢'},{char:'刀',pinyin:'dāo',desc:'小刀',emoji:'🔪'},{char:'衣',pinyin:'yī',desc:'衣服',emoji:'👕'},{char:'书',pinyin:'shū',desc:'书本',emoji:'📚'},{char:'画',pinyin:'huà',desc:'画画',emoji:'🎨'},{char:'纸',pinyin:'zhǐ',desc:'纸张',emoji:'📄'},{char:'笔',pinyin:'bǐ',desc:'毛笔',emoji:'✏️'},{char:'本',pinyin:'běn',desc:'本子',emoji:'📓'},{char:'尺',pinyin:'chǐ',desc:'尺子',emoji:'📏'},{char:'桌',pinyin:'zhuō',desc:'桌子',emoji:'🪑'},{char:'椅',pinyin:'yǐ',desc:'椅子',emoji:'🪑'},{char:'床',pinyin:'chuáng',desc:'床铺',emoji:'🛏️'},{char:'爸',pinyin:'bà',desc:'爸爸',emoji:'👨'},{char:'妈',pinyin:'mā',desc:'妈妈',emoji:'👩'},{char:'哥',pinyin:'gē',desc:'哥哥',emoji:'👦'},{char:'姐',pinyin:'jiě',desc:'姐姐',emoji:'👧'},{char:'弟',pinyin:'dì',desc:'弟弟',emoji:'👶'},{char:'妹',pinyin:'mèi',desc:'妹妹',emoji:'👧'},{char:'爷',pinyin:'yé',desc:'爷爷',emoji:'👴'},{char:'奶',pinyin:'nǎi',desc:'奶奶',emoji:'👵'},{char:'我',pinyin:'wǒ',desc:'自己',emoji:'🙋'},{char:'你',pinyin:'nǐ',desc:'对方',emoji:'🫵'},{char:'他',pinyin:'tā',desc:'男士',emoji:'👨'},{char:'她',pinyin:'tā',desc:'女士',emoji:'👩'},{char:'它',pinyin:'tā',desc:'动物',emoji:'🐶'},{char:'的',pinyin:'de',desc:'助词',emoji:'🔤'},{char:'是',pinyin:'shì',desc:'是的',emoji:'✅'},{char:'了',pinyin:'le',desc:'好了',emoji:'👌'},{char:'不',pinyin:'bù',desc:'不要',emoji:'🚫'},{char:'在',pinyin:'zài',desc:'正在',emoji:'📍'},{char:'有',pinyin:'yǒu',desc:'拥有',emoji:'🤲'},{char:'和',pinyin:'hé',desc:'和平',emoji:'🤝'},{char:'要',pinyin:'yào',desc:'需要',emoji:'🙏'},{char:'会',pinyin:'huì',desc:'学会',emoji:'📖'},{char:'能',pinyin:'néng',desc:'能力',emoji:'💪'},{char:'来',pinyin:'lái',desc:'过来',emoji:'🏃'},{char:'去',pinyin:'qù',desc:'离去',emoji:'🚶'},{char:'年',pinyin:'nián',desc:'新年',emoji:'📅'},{char:'岁',pinyin:'suì',desc:'岁数',emoji:'🎂'},{char:'云',pinyin:'yún',desc:'白云',emoji:'☁️'},{char:'雨',pinyin:'yǔ',desc:'下雨',emoji:'🌧️'},{char:'风',pinyin:'fēng',desc:'大风',emoji:'💨'},{char:'雪',pinyin:'xuě',desc:'雪花',emoji:'❄️'},{char:'雷',pinyin:'léi',desc:'雷声',emoji:'⚡'},{char:'电',pinyin:'diàn',desc:'闪电',emoji:'⚡'},{char:'星',pinyin:'xīng',desc:'星星',emoji:'⭐'},{char:'辰',pinyin:'chén',desc:'时辰',emoji:'🕐'},{char:'早',pinyin:'zǎo',desc:'早上',emoji:'🌅'},{char:'晚',pinyin:'wǎn',desc:'晚上',emoji:'🌆'},{char:'春',pinyin:'chūn',desc:'春天',emoji:'🌸'},{char:'夏',pinyin:'xià',desc:'夏天',emoji:'☀️'},{char:'秋',pinyin:'qiū',desc:'秋天',emoji:'🍂'},{char:'冬',pinyin:'dōng',desc:'冬天',emoji:'⛄'},{char:'江',pinyin:'jiāng',desc:'江河',emoji:'🏞️'},{char:'河',pinyin:'hé',desc:'小河',emoji:'🏞️'},{char:'湖',pinyin:'hú',desc:'湖水',emoji:'🏝️'},{char:'海',pinyin:'hǎi',desc:'大海',emoji:'🌊'},{char:'川',pinyin:'chuān',desc:'山川',emoji:'⛰️'},{char:'泉',pinyin:'quán',desc:'泉水',emoji:'💧'},{char:'沙',pinyin:'shā',desc:'沙滩',emoji:'🏖️'},{char:'森',pinyin:'sēn',desc:'森林',emoji:'🌲'},{char:'林',pinyin:'lín',desc:'树林',emoji:'🌳'},{char:'苗',pinyin:'miáo',desc:'禾苗',emoji:'🌱'},{char:'枝',pinyin:'zhī',desc:'树枝',emoji:'🌿'},{char:'根',pinyin:'gēn',desc:'树根',emoji:'🪵'},{char:'红',pinyin:'hóng',desc:'红色',emoji:'🔴'},{char:'黄',pinyin:'huáng',desc:'黄色',emoji:'🟡'},{char:'蓝',pinyin:'lán',desc:'蓝色',emoji:'🔵'},{char:'绿',pinyin:'lǜ',desc:'绿色',emoji:'🟢'},{char:'青',pinyin:'qīng',desc:'青色',emoji:'🟢'},{char:'紫',pinyin:'zǐ',desc:'紫色',emoji:'🟣'},{char:'橙',pinyin:'chéng',desc:'橙色',emoji:'🟠'},{char:'粉',pinyin:'fěn',desc:'粉色',emoji:'🩷'},{char:'棕',pinyin:'zōng',desc:'棕色',emoji:'🟤'},{char:'灰',pinyin:'huī',desc:'灰色',emoji:'🔘'},{char:'黑',pinyin:'hēi',desc:'黑色',emoji:'⚫'},{char:'白',pinyin:'bái',desc:'白色',emoji:'⚪'},{char:'金',pinyin:'jīn',desc:'金色',emoji:'🥇'},{char:'银',pinyin:'yín',desc:'银色',emoji:'🥈'},{char:'铜',pinyin:'tóng',desc:'铜器',emoji:'🥉'},{char:'铁',pinyin:'tiě',desc:'铁块',emoji:'🔩'},{char:'蛇',pinyin:'shé',desc:'小蛇',emoji:'🐍'},{char:'龟',pinyin:'guī',desc:'乌龟',emoji:'🐢'},{char:'蛙',pinyin:'wā',desc:'青蛙',emoji:'🐸'},{char:'蝴',pinyin:'hú',desc:'蝴蝶',emoji:'🦋'},{char:'蜓',pinyin:'tíng',desc:'蜻蜓',emoji:'🦟'},{char:'蜂',pinyin:'fēng',desc:'蜜蜂',emoji:'🐝'},{char:'蚁',pinyin:'yǐ',desc:'蚂蚁',emoji:'🐜'},{char:'蝉',pinyin:'chán',desc:'知了',emoji:'🦗'},{char:'雁',pinyin:'yàn',desc:'大雁',emoji:'🦢'},{char:'鹰',pinyin:'yīng',desc:'老鹰',emoji:'🦅'},{char:'鸦',pinyin:'yā',desc:'乌鸦',emoji:'🐦‍⬛'},{char:'鹊',pinyin:'què',desc:'喜鹊',emoji:'🐦'},{char:'鸽',pinyin:'gē',desc:'鸽子',emoji:'🕊️'},{char:'猴',pinyin:'hóu',desc:'猴子',emoji:'🐒'},{char:'熊',pinyin:'xióng',desc:'小熊',emoji:'🐻'},{char:'狐',pinyin:'hú',desc:'狐狸',emoji:'🦊'},{char:'狼',pinyin:'láng',desc:'大灰狼',emoji:'🐺'},{char:'狮',pinyin:'shī',desc:'狮子',emoji:'🦁'},{char:'象',pinyin:'xiàng',desc:'大象',emoji:'🐘'},{char:'鹿',pinyin:'lù',desc:'小鹿',emoji:'🦌'},{char:'豹',pinyin:'bào',desc:'豹子',emoji:'🐆'},{char:'骨',pinyin:'gǔ',desc:'骨头',emoji:'🦴'},{char:'血',pinyin:'xuè',desc:'血液',emoji:'🩸'},{char:'脑',pinyin:'nǎo',desc:'大脑',emoji:'🧠'},{char:'脸',pinyin:'liǎn',desc:'脸蛋',emoji:'😊'},{char:'眉',pinyin:'méi',desc:'眉毛',emoji:'🫣'},{char:'眼',pinyin:'yǎn',desc:'眼睛',emoji:'👀'},{char:'睛',pinyin:'jīng',desc:'眼睛',emoji:'👁️'},{char:'鼻',pinyin:'bí',desc:'鼻子',emoji:'👃'},{char:'背',pinyin:'bèi',desc:'后背',emoji:'🎒'},{char:'胸',pinyin:'xiōng',desc:'胸口',emoji:'❤️'},{char:'腰',pinyin:'yāo',desc:'腰部',emoji:'🩱'},{char:'肚',pinyin:'dù',desc:'肚子',emoji:'🍽️'},{char:'掌',pinyin:'zhǎng',desc:'手掌',emoji:'✋'},{char:'指',pinyin:'zhǐ',desc:'手指',emoji:'☝️'},{char:'拳',pinyin:'quán',desc:'拳头',emoji:'✊'},{char:'脚',pinyin:'jiǎo',desc:'双脚',emoji:'🦶'},{char:'腿',pinyin:'tuǐ',desc:'大腿',emoji:'🦵'},{char:'臂',pinyin:'bì',desc:'手臂',emoji:'💪'},{char:'身',pinyin:'shēn',desc:'身体',emoji:'🧍'},{char:'男',pinyin:'nán',desc:'男孩',emoji:'👦'},{char:'女',pinyin:'nǚ',desc:'女孩',emoji:'👧'},{char:'老',pinyin:'lǎo',desc:'老人',emoji:'👴'},{char:'少',pinyin:'shào',desc:'少年',emoji:'🧒'},{char:'朋',pinyin:'péng',desc:'朋友',emoji:'👫'},{char:'友',pinyin:'yǒu',desc:'友好',emoji:'🤝'},{char:'亲',pinyin:'qīn',desc:'亲人',emoji:'👨‍👩‍👧'},{char:'爱',pinyin:'ài',desc:'爱心',emoji:'💖'},{char:'师',pinyin:'shī',desc:'老师',emoji:'👩‍🏫'},{char:'学',pinyin:'xué',desc:'学习',emoji:'📚'},{char:'生',pinyin:'shēng',desc:'学生',emoji:'👨‍🎓'},{char:'医',pinyin:'yī',desc:'医生',emoji:'👨‍⚕️'},{char:'工',pinyin:'gōng',desc:'工人',emoji:'👷'},{char:'农',pinyin:'nóng',desc:'农民',emoji:'🧑‍🌾'},{char:'兵',pinyin:'bīng',desc:'士兵',emoji:'💂'},{char:'吃',pinyin:'chī',desc:'吃饭',emoji:'🍽️'},{char:'喝',pinyin:'hē',desc:'喝水',emoji:'🥤'},{char:'睡',pinyin:'shuì',desc:'睡觉',emoji:'😴'},{char:'走',pinyin:'zǒu',desc:'走路',emoji:'🚶'},{char:'跑',pinyin:'pǎo',desc:'跑步',emoji:'🏃'},{char:'跳',pinyin:'tiào',desc:'跳跃',emoji:'🤸'},{char:'爬',pinyin:'pá',desc:'爬行',emoji:'🧗'},{char:'站',pinyin:'zhàn',desc:'站立',emoji:'🧍'},{char:'坐',pinyin:'zuò',desc:'坐下',emoji:'🪑'},{char:'躺',pinyin:'tǎng',desc:'躺下',emoji:'🛌'},{char:'看',pinyin:'kàn',desc:'看见',emoji:'👀'},{char:'听',pinyin:'tīng',desc:'听话',emoji:'👂'},{char:'说',pinyin:'shuō',desc:'说话',emoji:'🗣️'},{char:'唱',pinyin:'chàng',desc:'唱歌',emoji:'🎤'},{char:'哭',pinyin:'kū',desc:'哭泣',emoji:'😭'},{char:'笑',pinyin:'xiào',desc:'笑容',emoji:'😄'},{char:'打',pinyin:'dǎ',desc:'拍打',emoji:'👋'},{char:'抱',pinyin:'bào',desc:'拥抱',emoji:'🫂'},{char:'拍',pinyin:'pāi',desc:'拍手',emoji:'👏'},{char:'推',pinyin:'tuī',desc:'推门',emoji:'🚪'},{char:'拉',pinyin:'lā',desc:'拉手',emoji:'🤝'},{char:'提',pinyin:'tí',desc:'提包',emoji:'🛍️'},{char:'拿',pinyin:'ná',desc:'拿手',emoji:'🤲'},{char:'放',pinyin:'fàng',desc:'放下',emoji:'⬇️'},{char:'找',pinyin:'zhǎo',desc:'找出',emoji:'🔍'},{char:'买',pinyin:'mǎi',desc:'买家',emoji:'🛒'},{char:'卖',pinyin:'mài',desc:'卖家',emoji:'💰'},{char:'给',pinyin:'gěi',desc:'给予',emoji:'🎁'},{char:'收',pinyin:'shōu',desc:'收下',emoji:'📥'},{char:'送',pinyin:'sòng',desc:'送礼',emoji:'🎁'},{char:'借',pinyin:'jiè',desc:'借书',emoji:'📖'},{char:'还',pinyin:'hái',desc:'还给',emoji:'↩️'},{char:'问',pinyin:'wèn',desc:'提问',emoji:'❓'},{char:'答',pinyin:'dá',desc:'回答',emoji:'✅'},{char:'叫',pinyin:'jiào',desc:'叫喊',emoji:'📣'},{char:'喊',pinyin:'hǎn',desc:'喊叫',emoji:'📢'},{char:'读',pinyin:'dú',desc:'读书',emoji:'📖'},{char:'写',pinyin:'xiě',desc:'写字',emoji:'✍️'},{char:'画',pinyin:'huà',desc:'画画',emoji:'🎨'},{char:'练',pinyin:'liàn',desc:'练习',emoji:'📝'},{char:'动',pinyin:'dòng',desc:'动作',emoji:'🏃'},{char:'静',pinyin:'jìng',desc:'安静',emoji:'🤫'},{char:'东',pinyin:'dōng',desc:'东方',emoji:'🌅'},{char:'西',pinyin:'xī',desc:'西方',emoji:'🌇'},{char:'南',pinyin:'nán',desc:'南方',emoji:'🔽'},{char:'北',pinyin:'běi',desc:'北方',emoji:'🔼'},{char:'外',pinyin:'wài',desc:'外面',emoji:'🏠'},{char:'里',pinyin:'lǐ',desc:'里面',emoji:'📦'},{char:'旁',pinyin:'páng',desc:'旁边',emoji:'➡️'},{char:'边',pinyin:'biān',desc:'边缘',emoji:'📐'},{char:'前',pinyin:'qián',desc:'前面',emoji:'⏩'},{char:'后',pinyin:'hòu',desc:'后面',emoji:'⏪'},{char:'顶',pinyin:'dǐng',desc:'头顶',emoji:'👆'},{char:'底',pinyin:'dǐ',desc:'底部',emoji:'👇'},{char:'好',pinyin:'hǎo',desc:'很好',emoji:'👍'},{char:'美',pinyin:'měi',desc:'美丽',emoji:'🌸'},{char:'香',pinyin:'xiāng',desc:'香味',emoji:'🌺'},{char:'甜',pinyin:'tián',desc:'甜蜜',emoji:'🍯'},{char:'苦',pinyin:'kǔ',desc:'苦味',emoji:'🫒'},{char:'酸',pinyin:'suān',desc:'酸味',emoji:'🍋'},{char:'辣',pinyin:'là',desc:'辣椒',emoji:'🌶️'},{char:'咸',pinyin:'xián',desc:'咸味',emoji:'🧂'},{char:'鲜',pinyin:'xiān',desc:'新鲜',emoji:'🥗'},{char:'干',pinyin:'gān',desc:'干燥',emoji:'🌵'},{char:'湿',pinyin:'shī',desc:'湿润',emoji:'💧'},{char:'冷',pinyin:'lěng',desc:'寒冷',emoji:'🥶'},{char:'热',pinyin:'rè',desc:'炎热',emoji:'🥵'},{char:'温',pinyin:'wēn',desc:'温暖',emoji:'🧣'},{char:'凉',pinyin:'liáng',desc:'凉爽',emoji:'🍃'},{char:'轻',pinyin:'qīng',desc:'轻巧',emoji:'🪶'},{char:'重',pinyin:'zhòng',desc:'重量',emoji:'🏋️'},{char:'快',pinyin:'kuài',desc:'快速',emoji:'⚡'},{char:'慢',pinyin:'màn',desc:'慢速',emoji:'🐢'},{char:'远',pinyin:'yuǎn',desc:'远处',emoji:'🔭'},{char:'近',pinyin:'jìn',desc:'近处',emoji:'🤏'},{char:'高',pinyin:'gāo',desc:'高低',emoji:'⬆️'},{char:'多',pinyin:'duō',desc:'多少',emoji:'🔢'},{char:'明',pinyin:'míng',desc:'明亮',emoji:'💡'},{char:'暗',pinyin:'àn',desc:'黑暗',emoji:'🌑'},{char:'生',pinyin:'shēng',desc:'生命',emoji:'🌱'},{char:'死',pinyin:'sǐ',desc:'死亡',emoji:'💀'},{char:'新',pinyin:'xīn',desc:'新鲜',emoji:'✨'},{char:'旧',pinyin:'jiù',desc:'旧物',emoji:'📜'},{char:'房',pinyin:'fáng',desc:'房子',emoji:'🏠'},{char:'屋',pinyin:'wū',desc:'屋顶',emoji:'🏚️'},{char:'室',pinyin:'shì',desc:'室内',emoji:'🚪'},{char:'厅',pinyin:'tīng',desc:'客厅',emoji:'🛋️'},{char:'院',pinyin:'yuàn',desc:'院子',emoji:'🏡'},{char:'园',pinyin:'yuán',desc:'花园',emoji:'🌻'},{char:'校',pinyin:'xiào',desc:'学校',emoji:'🏫'},{char:'店',pinyin:'diàn',desc:'小店',emoji:'🏪'},{char:'厂',pinyin:'chǎng',desc:'工厂',emoji:'🏭'},{char:'场',pinyin:'chǎng',desc:'广场',emoji:'🎪'},{char:'站',pinyin:'zhàn',desc:'车站',emoji:'🚉'},{char:'路',pinyin:'lù',desc:'道路',emoji:'🛣️'},{char:'街',pinyin:'jiē',desc:'街道',emoji:'🏙️'},{char:'桥',pinyin:'qiáo',desc:'桥梁',emoji:'🌉'},{char:'楼',pinyin:'lóu',desc:'楼房',emoji:'🏢'},{char:'城',pinyin:'chéng',desc:'城市',emoji:'🏙️'},{char:'村',pinyin:'cūn',desc:'村庄',emoji:'🏘️'},{char:'乡',pinyin:'xiāng',desc:'乡村',emoji:'🌾'},{char:'镇',pinyin:'zhèn',desc:'小镇',emoji:'🏘️'},{char:'文',pinyin:'wén',desc:'文学',emoji:'📜'},{char:'字',pinyin:'zì',desc:'文字',emoji:'🔤'},{char:'词',pinyin:'cí',desc:'词语',emoji:'📝'},{char:'句',pinyin:'jù',desc:'句子',emoji:'📃'},{char:'段',pinyin:'duàn',desc:'段落',emoji:'📖'},{char:'篇',pinyin:'piān',desc:'篇章',emoji:'📄'},{char:'课',pinyin:'kè',desc:'上课',emoji:'📚'},{char:'科',pinyin:'kē',desc:'科学',emoji:'🔬'},{char:'题',pinyin:'tí',desc:'题目',emoji:'❓'},{char:'考',pinyin:'kǎo',desc:'考试',emoji:'📝'},{char:'试',pinyin:'shì',desc:'测验',emoji:'✅'},{char:'数',pinyin:'shù',desc:'数学',emoji:'🔢'},{char:'算',pinyin:'suàn',desc:'计算',emoji:'🧮'},{char:'拼',pinyin:'pīn',desc:'拼音',emoji:'🔤'},{char:'音',pinyin:'yīn',desc:'声音',emoji:'🎵'},{char:'语',pinyin:'yǔ',desc:'语文',emoji:'📖'},{char:'英',pinyin:'yīng',desc:'英语',emoji:'🔠'},{char:'半',pinyin:'bàn',desc:'一半',emoji:'⬜'},{char:'双',pinyin:'shuāng',desc:'一双',emoji:'👐'},{char:'只',pinyin:'zhī',desc:'一只',emoji:'🦜'},{char:'条',pinyin:'tiáo',desc:'一条',emoji:'🐟'},{char:'张',pinyin:'zhāng',desc:'一张',emoji:'🗞️'},{char:'本',pinyin:'běn',desc:'一本',emoji:'📓'},{char:'支',pinyin:'zhī',desc:'一支',emoji:'🖊️'},{char:'把',pinyin:'bǎ',desc:'一把',emoji:'🧹'},{char:'件',pinyin:'jiàn',desc:'一件',emoji:'👕'},{char:'个',pinyin:'gè',desc:'一个',emoji:'1️⃣'},{char:'颗',pinyin:'kē',desc:'一颗',emoji:'💎'},{char:'粒',pinyin:'lì',desc:'一粒',emoji:'🌾'},{char:'块',pinyin:'kuài',desc:'一块',emoji:'🧱'},{char:'片',pinyin:'piàn',desc:'一片',emoji:'🍂'},{char:'层',pinyin:'céng',desc:'一层',emoji:'🥞'},{char:'面',pinyin:'miàn',desc:'一面',emoji:'🪞'},{char:'间',pinyin:'jiān',desc:'一间',emoji:'🚪'},{char:'座',pinyin:'zuò',desc:'一座',emoji:'🗿'},{char:'棵',pinyin:'kē',desc:'一棵',emoji:'🌳'},{char:'朵',pinyin:'duǒ',desc:'一朵',emoji:'🌸'},{char:'匹',pinyin:'pǐ',desc:'一匹',emoji:'🐴'},{char:'头',pinyin:'tóu',desc:'一头',emoji:'🐮'},{char:'尾',pinyin:'wěi',desc:'尾巴',emoji:'🐕'},{char:'辆',pinyin:'liàng',desc:'一辆',emoji:'🚗'},{char:'艘',pinyin:'sōu',desc:'一艘',emoji:'⛵'},{char:'架',pinyin:'jià',desc:'一架',emoji:'✈️'},{char:'台',pinyin:'tái',desc:'一台',emoji:'📺'},{char:'部',pinyin:'bù',desc:'一部',emoji:'📱'},{char:'盏',pinyin:'zhǎn',desc:'一盏',emoji:'🏮'},{char:'盆',pinyin:'pén',desc:'一盆',emoji:'🪴'},{char:'碗',pinyin:'wǎn',desc:'一碗',emoji:'🥣'},{char:'杯',pinyin:'bēi',desc:'一杯',emoji:'🥤'},{char:'盘',pinyin:'pán',desc:'一盘',emoji:'🥘'},{char:'壶',pinyin:'hú',desc:'茶壶',emoji:'🫖'},{char:'瓶',pinyin:'píng',desc:'瓶子',emoji:'🍶'},{char:'罐',pinyin:'guàn',desc:'罐子',emoji:'🫙'},{char:'桶',pinyin:'tǒng',desc:'水桶',emoji:'🪣'},{char:'盒',pinyin:'hé',desc:'盒子',emoji:'📦'},{char:'袋',pinyin:'dài',desc:'袋子',emoji:'🛍️'},{char:'包',pinyin:'bāo',desc:'书包',emoji:'🎒'},{char:'箱',pinyin:'xiāng',desc:'箱子',emoji:'📦'},{char:'柜',pinyin:'guì',desc:'柜子',emoji:'🗄️'},{char:'这',pinyin:'zhè',desc:'这里',emoji:'👇'},{char:'那',pinyin:'nà',desc:'那里',emoji:'👆'},{char:'哪',pinyin:'nǎ',desc:'哪里',emoji:'❓'},{char:'谁',pinyin:'shéi',desc:'是谁',emoji:'🤷'},{char:'什',pinyin:'shén',desc:'什么',emoji:'❔'},{char:'么',pinyin:'me',desc:'什么',emoji:'❔'},{char:'几',pinyin:'jǐ',desc:'几个',emoji:'🔢'},{char:'百',pinyin:'bǎi',desc:'一百',emoji:'💯'},{char:'千',pinyin:'qiān',desc:'一千',emoji:'🔢'},{char:'万',pinyin:'wàn',desc:'一万',emoji:'🔟'},{char:'零',pinyin:'líng',desc:'零分',emoji:'0️⃣'},{char:'两',pinyin:'liǎng',desc:'两个',emoji:'2️⃣'},{char:'元',pinyin:'yuán',desc:'一元钱',emoji:'💴'},{char:'角',pinyin:'jiǎo',desc:'一角钱',emoji:'🪙'},{char:'分',pinyin:'fēn',desc:'一分钟',emoji:'⏱️'},{char:'点',pinyin:'diǎn',desc:'一点',emoji:'•'},{char:'钟',pinyin:'zhōng',desc:'时钟',emoji:'🕰️'},{char:'时',pinyin:'shí',desc:'时间',emoji:'⏰'},{char:'今',pinyin:'jīn',desc:'今天',emoji:'📅'},{char:'明',pinyin:'míng',desc:'明天',emoji:'📅'},{char:'昨',pinyin:'zuó',desc:'昨天',emoji:'📅'},{char:'午',pinyin:'wǔ',desc:'中午',emoji:'🌞'},{char:'夜',pinyin:'yè',desc:'夜晚',emoji:'🌃'},{char:'晴',pinyin:'qíng',desc:'晴天',emoji:'☀️'},{char:'阴',pinyin:'yīn',desc:'阴天',emoji:'☁️'}]
+},
+math:{
+  numbers: Array.from({length:100},(_,i)=>({n:i+1,emoji:['🔴','🔵','🟢','🟡','🟠','🟣'][(i)%6]})),
+  countLists:[
+    {label:'1-10数数',range:'1_10',items:['🍎','🍊','🍌','🍇','🍓','🍑','🍍','🥝','🍒','🥭']},
+    {label:'1-20数数',range:'1_20',items:['⭐','🌙','☀️','🌈','⚡','❄️','🌸','🍀','🍁','🍄','🌹','🌻','🌵','🌴','🌲','🌳','🍃','🪷','🌺','🌷']},
+    {label:'10-100数数',range:'10_100',items:[]}
+  ],
+  mathBank:{},
+  shapes:[
+    {name:'圆形',en:'Circle',emoji:'⭕',desc:'圆圆的，像太阳和饼干。'},
+    {name:'正方形',en:'Square',emoji:'🟦',desc:'四边一样长，像窗户。'},
+    {name:'三角形',en:'Triangle',emoji:'🔺',desc:'有三条边，像小屋顶。'},
+    {name:'长方形',en:'Rectangle',emoji:'🟩',desc:'长长方方的，像书本。'},
+    {name:'心形',en:'Heart',emoji:'❤️',desc:'漂亮的爱心，代表爱。'},
+    {name:'星形',en:'Star',emoji:'⭐',desc:'星星的形状，一闪一闪。'},
+    {name:'椭圆形',en:'Oval',emoji:'🥚',desc:'像鸡蛋一样的形状。'},
+    {name:'菱形',en:'Diamond',emoji:'🔷',desc:'像宝石一样闪闪发亮。'},
+    {name:'月牙形',en:'Crescent',emoji:'🌙',desc:'像弯弯的月亮。'}
+  ],
+  sizeCompare:[
+    {name:'大',en:'Big',emoji:'🐘',desc:'大象很大，像一座小山。'},
+    {name:'小',en:'Small',emoji:'🐭',desc:'老鼠很小，可以钻进小洞。'},
+    {name:'长',en:'Long',emoji:'🐍',desc:'蛇的身体很长很长。'},
+    {name:'短',en:'Short',emoji:'🍄',desc:'蘑菇的柄很短很短。'},
+    {name:'高',en:'Tall',emoji:'🦒',desc:'长颈鹿很高，可以吃到树叶。'},
+    {name:'矮',en:'Short',emoji:'🐧',desc:'企鹅矮矮的，走起路来摇摇摆摆。'},
+    {name:'多',en:'Many',emoji:'🍇',desc:'一串葡萄有很多很多颗。'},
+    {name:'少',en:'Few',emoji:'🍒',desc:'盘子里只有一颗樱桃，很少。'}
+  ],
+  colors:[
+    {name:'红色',en:'Red',emoji:'🔴',desc:'像苹果和火焰一样的颜色。'},
+    {name:'黄色',en:'Yellow',emoji:'🟡',desc:'像太阳和香蕉一样的颜色。'},
+    {name:'蓝色',en:'Blue',emoji:'🔵',desc:'像天空和大海一样的颜色。'},
+    {name:'绿色',en:'Green',emoji:'🟢',desc:'像小草和树叶一样的颜色。'},
+    {name:'橙色',en:'Orange',emoji:'🟠',desc:'像橙子一样的颜色。'},
+    {name:'紫色',en:'Purple',emoji:'🟣',desc:'像葡萄和茄子一样的颜色。'},
+    {name:'粉色',en:'Pink',emoji:'🩷',desc:'像花朵和棉花糖一样的颜色。'},
+    {name:'黑色',en:'Black',emoji:'⚫',desc:'像夜晚和煤炭一样的颜色。'},
+    {name:'白色',en:'White',emoji:'⚪',desc:'像云朵和棉花一样的颜色。'},
+    {name:'棕色',en:'Brown',emoji:'🟤',desc:'像巧克力和树干一样的颜色。'}
+  ]
+},
+english:{
+  letters: Array.from({length:26},(_,i)=>({ch:String.fromCharCode(65+i),emoji:['🍎','⚽','🐱','🐶','🥚','🐟','🍇','🏠','🍦','🧃','🪁','🦁','🌙','🪺','🍊','🎨','👑','🚀','⭐','🌲','☂️','🎻','🍉','☀️','🪀','🦓'][i]})),
+  words:[
+    {en:'apple',zh:'苹果',emoji:'🍎'},{en:'banana',zh:'香蕉',emoji:'🍌'},{en:'cat',zh:'猫',emoji:'🐱'},{en:'dog',zh:'狗',emoji:'🐶'},
+    {en:'elephant',zh:'大象',emoji:'🐘'},{en:'fish',zh:'鱼',emoji:'🐟'},{en:'grape',zh:'葡萄',emoji:'🍇'},{en:'house',zh:'房子',emoji:'🏠'},
+    {en:'ice cream',zh:'冰淇淋',emoji:'🍦'},{en:'juice',zh:'果汁',emoji:'🧃'},{en:'kite',zh:'风筝',emoji:'🪁'},{en:'lion',zh:'狮子',emoji:'🦁'},
+    {en:'moon',zh:'月亮',emoji:'🌙'},{en:'nest',zh:'鸟巢',emoji:'🪺'},{en:'orange',zh:'橙子',emoji:'🍊'},{en:'pencil',zh:'铅笔',emoji:'✏️'},
+    {en:'queen',zh:'王后',emoji:'👑'},{en:'rabbit',zh:'兔子',emoji:'🐰'},{en:'sun',zh:'太阳',emoji:'☀️'},{en:'tree',zh:'树',emoji:'🌲'},
+    {en:'umbrella',zh:'雨伞',emoji:'☂️'},{en:'violin',zh:'小提琴',emoji:'🎻'},{en:'watermelon',zh:'西瓜',emoji:'🍉'},
+    {en:'box',zh:'盒子',emoji:'📦'},{en:'yellow',zh:'黄色',emoji:'🟡'},{en:'zoo',zh:'动物园',emoji:'🦁'}
+  ],
+  phrases:[
+    {en:'Good morning',zh:'早上好'},{en:'Thank you',zh:'谢谢你'},{en:'I love you',zh:'我爱你'},
+    {en:'Nice to meet you',zh:'很高兴认识你'},{en:'How are you',zh:'你好吗'},
+    {en:'Good night',zh:'晚安'},{en:'Please',zh:'请'},{en:'Sorry',zh:'对不起'}
+  ],
+  sentences:[
+    {en:'The sun is shining.',zh:'阳光灿烂。'},{en:'I like apples.',zh:'我喜欢苹果。'},
+    {en:'The cat is sleeping.',zh:'小猫在睡觉。'},{en:'It is a beautiful day.',zh:'今天天气真好。'},
+    {en:'My dog is happy.',zh:'我的小狗很开心。'},{en:'I see a red flower.',zh:'我看见一朵红花。'},
+    {en:'The bird is singing.',zh:'小鸟在唱歌。'},{en:'Water is very important.',zh:'水非常重要。'}
+  ]
+},
+science:{
+  animals:[
+    {name:'老虎',en:'Tiger',desc:'森林之王，身上有黑色条纹。',emoji:'🐯'},{name:'大象',en:'Elephant',desc:'陆地上最大的动物，有长长的鼻子。',emoji:'🐘'},
+    {name:'狮子',en:'Lion',desc:'草原之王，雄狮有漂亮的鬃毛。',emoji:'🦁'},{name:'熊猫',en:'Panda',desc:'中国的国宝，爱吃竹子。',emoji:'🐼'},
+    {name:'长颈鹿',en:'Giraffe',desc:'世界上最高的动物，脖子很长。',emoji:'🦒'},{name:'猴子',en:'Monkey',desc:'聪明活泼，喜欢在树上跳来跳去。',emoji:'🐒'},
+    {name:'海豚',en:'Dolphin',desc:'非常聪明的海洋动物，喜欢跳跃。',emoji:'🐬'},{name:'企鹅',en:'Penguin',desc:'住在南极，不会飞但很擅长游泳。',emoji:'🐧'}
+  ],
+  plants:[
+    {name:'玫瑰',en:'Rose',desc:'漂亮的花，有很多颜色。',emoji:'🌹'},{name:'向日葵',en:'Sunflower',desc:'花朵总是朝着太阳的方向。',emoji:'🌻'},
+    {name:'仙人掌',en:'Cactus',desc:'生长在沙漠中，很耐旱。',emoji:'🌵'},{name:'枫叶',en:'Maple Leaf',desc:'秋天会变成红色，非常美丽。',emoji:'🍁'}
+  ],
+  common:[
+    {name:'多喝水',en:'Drink more water',desc:'每天多喝水，身体更健康。',emoji:'💧'},{name:'勤洗手',en:'Wash hands',desc:'吃饭前和上厕所后要洗手，赶走细菌。',emoji:'🧼'},
+    {name:'多吃蔬菜',en:'Eat vegetables',desc:'蔬菜里有丰富的维生素，让我们长高高。',emoji:'🥦'},{name:'早睡早起',en:'Sleep early',desc:'充足的睡眠让我们精力满满。',emoji:'🛏️'}
+  ]
+},
+geo:{
+  continents:[
+    {name:'亚洲',en:'Asia',desc:'世界上最大的洲，中国是亚洲国家。',emoji:'🌏'},{name:'欧洲',en:'Europe',desc:'有很多古老城堡和艺术名作。',emoji:'🏰'},
+    {name:'非洲',en:'Africa',desc:'有大草原和许多野生动物。',emoji:'🦁'},{name:'北美洲',en:'North America',desc:'有广阔的森林和现代化城市。',emoji:'🌲'},
+    {name:'南美洲',en:'South America',desc:'有最大的热带雨林。',emoji:'🌴'},{name:'大洋洲',en:'Oceania',desc:'四面环海，有可爱的袋鼠。',emoji:'🦘'},
+    {name:'南极洲',en:'Antarctica',desc:'最冷的大陆，住着企鹅。',emoji:'🐧'}
+  ],
+  countries:[
+    {name:'中国',en:'China',desc:'我们美丽的祖国，历史悠久。',emoji:'🇨🇳'},{name:'美国',en:'USA',desc:'有自由女神像和好莱坞。',emoji:'🇺🇸'},
+    {name:'日本',en:'Japan',desc:'樱花之国，富士山很有名。',emoji:'🇯🇵'},{name:'法国',en:'France',desc:'浪漫之都，埃菲尔铁塔所在地。',emoji:'🇫🇷'},
+    {name:'英国',en:'UK',desc:'大本钟和伦敦眼非常有名。',emoji:'🇬🇧'},{name:'埃及',en:'Egypt',desc:'金字塔和狮身人面像的故乡。',emoji:'🇪🇬'}
+  ],
+  landmarks:[
+    {name:'长城',en:'Great Wall',desc:'中国古代伟大的建筑，像一条巨龙。',emoji:'🧱'},{name:'故宫',en:'Forbidden City',desc:'明清两代的皇宫，红墙黄瓦很漂亮。',emoji:'🏯'},
+    {name:'埃菲尔铁塔',en:'Eiffel Tower',desc:'法国巴黎的标志，高约324米。',emoji:'🗼'},{name:'自由女神像',en:'Statue of Liberty',desc:'美国的象征，代表着自由。',emoji:'🗽'}
+  ],
+  china:[
+    {name:'北京',en:'Beijing',desc:'中国的首都，有天安门和故宫。',emoji:'🏯'},{name:'上海',en:'Shanghai',desc:'繁华的东方明珠，高楼林立。',emoji:'🏙️'},
+    {name:'西安',en:'Xi\'an',desc:'古都长安，兵马俑世界闻名。',emoji:'🗿'},{name:'泰山',en:'Mount Tai',desc:'五岳之首，很多皇帝来这里祭祀。',emoji:'🏔️'},
+    {name:'饺子',en:'Dumplings',desc:'中国传统美食，春节必吃。',emoji:'🥟'},{name:'面条',en:'Noodles',desc:'细长顺滑，代表长寿。',emoji:'🍜'}
+  ]
+},
+history:{
+  dynasties:[
+    {name:'夏朝',en:'Xia Dynasty',desc:'中国第一个朝代，禹治水有功。',emoji:'👑'},{name:'商朝',en:'Shang Dynasty',desc:'创造了甲骨文和青铜器。',emoji:'⚔️'},
+    {name:'周朝',en:'Zhou Dynasty',desc:'分封制和礼乐制度非常完善。',emoji:'📜'},{name:'秦朝',en:'Qin Dynasty',desc:'秦始皇统一中国，修长城。',emoji:'🧱'},
+    {name:'汉朝',en:'Han Dynasty',desc:'丝绸之路开通，国力强盛。',emoji:'🐎'},{name:'唐朝',en:'Tang Dynasty',desc:'诗歌繁荣，万国来朝。',emoji:'🖌️'},
+    {name:'宋朝',en:'Song Dynasty',desc:'科技发达，发明了活字印刷。',emoji:'📖'},{name:'明朝',en:'Ming Dynasty',desc:'郑和下西洋，修建故宫。',emoji:'🏯'},
+    {name:'清朝',en:'Qing Dynasty',desc:'最后一个封建王朝，红楼梦诞生。',emoji:'📜'}
+  ],
+  figures:[
+    {name:'孔子',en:'Confucius',desc:'伟大的思想家和教育家，创立儒家学说。',emoji:'🧔'},{name:'秦始皇',en:'Qin Shi Huang',desc:'统一六国，建立第一个中央集权国家。',emoji:'👑'},
+    {name:'李白',en:'Li Bai',desc:'唐朝著名诗人，被称为"诗仙"。',emoji:'🖌️'},{name:'诸葛亮',en:'Zhuge Liang',desc:'三国时期蜀汉丞相，智慧超群。',emoji:'🪭'}
+  ],
+  events:[
+    {name:'大禹治水',en:'Yu the Great Controls Floods',desc:'大禹带领百姓疏通河道，三过家门而不入。',emoji:'🌊'},{name:'造纸术',en:'Papermaking',desc:'东汉蔡伦改进了造纸术，方便书写。',emoji:'📜'},
+    {name:'指南针',en:'Compass',desc:'中国古代发明，帮助航海家辨别方向。',emoji:'🧭'},{name:'印刷术',en:'Printing',desc:'毕昇发明活字印刷，让书籍更容易传播。',emoji:'📚'}
+  ]
+},
+space:{
+  solar:[
+    {name:'太阳',en:'Sun',desc:'太阳系的中心，给我们带来光和热。',emoji:'☀️'},{name:'水星',en:'Mercury',desc:'离太阳最近，表面温差很大。',emoji:'🪐'},
+    {name:'金星',en:'Venus',desc:'最亮的行星，温度非常高。',emoji:'🪐'},{name:'地球',en:'Earth',desc:'我们的家园，有海洋与陆地。',emoji:'🌍'},
+    {name:'火星',en:'Mars',desc:'红色的星球，科学家想在上面建基地。',emoji:'🪐'},{name:'木星',en:'Jupiter',desc:'最大的行星，有很多卫星。',emoji:'🪐'},
+    {name:'土星',en:'Saturn',desc:'有美丽的光环围绕。',emoji:'🪐'},{name:'天王星',en:'Uranus',desc:'躺在轨道上转的冰巨星。',emoji:'🪐'},
+    {name:'海王星',en:'Neptune',desc:'最远的大行星，风暴猛烈。',emoji:'🪐'}
+  ],
+  stars:[
+    {name:'北极星',en:'Polaris',desc:'永远指向北方，古代航海家用它导航。',emoji:'⭐'},{name:'天狼星',en:'Sirius',desc:'夜空中最亮的恒星。',emoji:'⭐'},
+    {name:'牛郎星',en:'Altair',desc:'七夕传说中牛郎变成的星星。',emoji:'⭐'},{name:'织女星',en:'Vega',desc:'七夕传说中织女变成的星星。',emoji:'⭐'}
+  ],
+  galaxy:[
+    {name:'银河系',en:'Milky Way',desc:'我们所在的星系，有数千亿颗恒星。',emoji:'🌌'},{name:'黑洞',en:'Black Hole',desc:'引力超级大，连光都逃不出去。',emoji:'⚫'},
+    {name:'星云',en:'Nebula',desc:'宇宙中的彩色云雾，孕育着新星。',emoji:'🌫️'}
+  ],
+  exploration:[
+    {name:'火箭',en:'Rocket',desc:'把卫星和宇航员送上太空。',emoji:'🚀'},{name:'人造卫星',en:'Satellite',desc:'围绕地球飞行，帮我们通信和导航。',emoji:'🛰️'},
+    {name:'宇宙飞船',en:'Spaceship',desc:'宇航员乘坐它去太空旅行。',emoji:'🛸'},{name:'宇航员',en:'Astronaut',desc:'勇敢探索太空的科学家。',emoji:'👨\u200d🚀'}
+  ]
+}
 };
-const PHRASES=[{en:'Hello',zh:'你好'},{en:'Good morning',zh:'早上好'},{en:'Good night',zh:'晚安'},{en:'Thank you',zh:'谢谢你'},{en:'You are welcome',zh:'不客气'},{en:'Sorry',zh:'对不起'},{en:'Goodbye',zh:'再见'},{en:'Nice to meet you',zh:'很高兴认识你'},{en:'How are you',zh:'你好吗'},{en:'I am fine',zh:'我很好'},{en:'What is your name',zh:'你叫什么名字'},{en:'My name is',zh:'我的名字是'},{en:'I love you',zh:'我爱你'},{en:'Happy birthday',zh:'生日快乐'},{en:'Happy New Year',zh:'新年快乐'},{en:'Good luck',zh:'祝你好运'},{en:'Well done',zh:'做得好'},{en:'Come on',zh:'加油'},{en:'Let us go',zh:'我们走吧'},{en:'Wait a minute',zh:'等一下'},{en:'Hurry up',zh:'快点'},{en:'Be careful',zh:'小心'},{en:'I am happy',zh:'我很高兴'},{en:'I am sad',zh:'我很难过'},{en:'I am hungry',zh:'我饿了'},{en:'I am thirsty',zh:'我渴了'},{en:'I am tired',zh:'我累了'},{en:'I am cold',zh:'我很冷'},{en:'I am hot',zh:'我很热'},{en:'I do not know',zh:'我不知道'},{en:'See you later',zh:'回头见'},{en:'Have a good day',zh:'祝你愉快'}];
-const SENTENCES=[{en:'This is a cat',zh:'这是一只猫'},{en:'I like apples',zh:'我喜欢苹果'},{en:'The sky is blue',zh:'天空是蓝色的'},{en:'Water is good for you',zh:'水对你有好处'},{en:'I can run fast',zh:'我能跑得很快'},{en:'She has a red bag',zh:'她有一个红色书包'},{en:'We go to school by bus',zh:'我们坐公交车上学'},{en:'Birds can fly',zh:'小鸟会飞'},{en:'Fish live in water',zh:'鱼生活在水里'},{en:'My mom cooks delicious food',zh:'我妈妈做美味食物'},{en:'The dog is playing',zh:'小狗在玩'},{en:'Spring is warm',zh:'春天很温暖'},{en:'Winter is cold',zh:'冬天很冷'},{en:'Children like games',zh:'孩子们喜欢游戏'},{en:'Reading is very interesting',zh:'读书很有趣'},{en:'The Earth goes around the Sun',zh:'地球绕太阳转'},{en:'I brush my teeth every morning',zh:'我每天早上刷牙'},{en:'Grandma tells me a story',zh:'奶奶给我讲故事'},{en:'Pandas live in China',zh:'大熊猫生活在中国'},{en:'The sun rises in the east',zh:'太阳从东方升起'}];
-const SHAPES=[{zh:'圆形',en:'Circle',em:'⭕'},{zh:'正方形',en:'Square',em:'🟦'},{zh:'三角形',en:'Triangle',em:'🔺'},{zh:'长方形',en:'Rectangle',em:'🟩'},{zh:'心形',en:'Heart',em:'❤️'},{zh:'星形',en:'Star',em:'⭐'},{zh:'椭圆形',en:'Oval',em:'🥚'},{zh:'菱形',en:'Diamond',em:'🔷'},{zh:'月牙形',en:'Crescent',em:'🌙'}];
-const SIZES=[{zh:'大',en:'Big',em:'🐘',zdesc:'大象很大',edesc:'The elephant is big'},{zh:'小',en:'Small',em:'🐭',zdesc:'老鼠很小',edesc:'The mouse is small'},{zh:'长',en:'Long',em:'🐍',zdesc:'蛇很长',edesc:'The snake is long'},{zh:'短',en:'Short',em:'🖊️',zdesc:'铅笔很短',edesc:'The pencil is short'},{zh:'高',en:'Tall',em:'🦒',zdesc:'长颈鹿很高',edesc:'The giraffe is tall'},{zh:'矮',en:'Short',em:'🍄',zdesc:'蘑菇很矮',edesc:'The mushroom is short'},{zh:'多',en:'Many',em:'🍬',zdesc:'糖果很多',edesc:'Lots of candy'},{zh:'少',en:'Few',em:'🍭',zdesc:'棒棒糖很少',edesc:'Only a few lollipops'}];
-const COLORS=[{zh:'红色',en:'Red',em:'🔴'},{zh:'黄色',en:'Yellow',em:'🟡'},{zh:'蓝色',en:'Blue',em:'🔵'},{zh:'绿色',en:'Green',em:'🟢'},{zh:'橙色',en:'Orange',em:'🟠'},{zh:'紫色',en:'Purple',em:'🟣'},{zh:'粉色',en:'Pink',em:'🩷'},{zh:'黑色',en:'Black',em:'⚫'},{zh:'白色',en:'White',em:'⚪'},{zh:'棕色',en:'Brown',em:'🟤'}];
-const SCIENCE={
-  animals:[{name:'大熊猫',nameEn:'Panda',desc:'中国的国宝，长着黑白相间的毛，最爱吃竹子。'},{name:'老虎',nameEn:'Tiger',desc:'森林之王，身上有黑色条纹。'},{name:'狮子',nameEn:'Lion',desc:'草原之王，雄性有漂亮的鬃毛。'},{name:'大象',nameEn:'Elephant',desc:'陆地上最大的动物，有长长的鼻子。'},{name:'长颈鹿',nameEn:'Giraffe',desc:'世界上最高的动物，脖子很长。'},{name:'袋鼠',nameEn:'Kangaroo',desc:'肚子上有一个口袋，小袋鼠住在里面。'},{name:'企鹅',nameEn:'Penguin',desc:'不会飞的鸟，生活在南极。'},{name:'海豚',nameEn:'Dolphin',desc:'海洋里最聪明的动物。'},{name:'斑马',nameEn:'Zebra',desc:'身上有黑白条纹。'},{name:'孔雀',nameEn:'Peacock',desc:'雄性会展开美丽的尾屏。'},{name:'燕子',nameEn:'Swallow',desc:'春天飞回来筑巢，尾巴像剪刀。'},{name:'蜜蜂',nameEn:'Bee',desc:'勤劳的小昆虫，会采花蜜酿蜂蜜。'},{name:'蝴蝶',nameEn:'Butterfly',desc:'从毛毛虫变来的，有美丽花纹。'},{name:'青蛙',nameEn:'Frog',desc:'小时候是蝌蚪，长大跳上岸捉害虫。'},{name:'金鱼',nameEn:'Goldfish',desc:'红红的，在水里游来游去。'},{name:'猫',nameEn:'Cat',desc:'人类的朋友，喜欢晒太阳。'},{name:'狗',nameEn:'Dog',desc:'人类最忠实的朋友。'},{name:'兔子',nameEn:'Rabbit',desc:'耳朵长长的，喜欢吃胡萝卜。'},{name:'猴子',nameEn:'Monkey',desc:'聪明机灵，喜欢吃香蕉。'}],
-  plants:[{name:'向日葵',nameEn:'Sunflower',desc:'大大的黄色花盘，永远朝着太阳。'},{name:'玫瑰',nameEn:'Rose',desc:'花朵鲜艳美丽。'},{name:'荷花',nameEn:'Lotus',desc:'夏天开花，出淤泥而不染。'},{name:'仙人掌',nameEn:'Cactus',desc:'生活在沙漠里，能储存很多水。'},{name:'松树',nameEn:'Pine',desc:'四季常青，冬天也不落叶。'},{name:'柳树',nameEn:'Willow',desc:'细细的枝条垂下来。'},{name:'竹子',nameEn:'Bamboo',desc:'长得很快，一节一节的。'},{name:'蘑菇',nameEn:'Mushroom',desc:'雨后从土里冒出来。'},{name:'蒲公英',nameEn:'Dandelion',desc:'白色绒球一吹就飞。'},{name:'苹果树',nameEn:'Apple tree',desc:'春天开白花，秋天结苹果。'},{name:'小麦',nameEn:'Wheat',desc:'金黄色，磨成面粉做馒头面条。'},{name:'水稻',nameEn:'Rice',desc:'生长在稻田里，是大米的来源。'},{name:'番茄',nameEn:'Tomato',desc:'红彤彤的，可当蔬菜也可当水果。'}],
-  transport:[{name:'汽车',nameEn:'Car',desc:'四个轮子在马路上跑。'},{name:'火车',nameEn:'Train',desc:'在铁轨上跑得很快。'},{name:'飞机',nameEn:'Airplane',desc:'在天上飞，带我们去远方。'},{name:'轮船',nameEn:'Ship',desc:'在大海上航行。'},{name:'自行车',nameEn:'Bicycle',desc:'两个轮子，脚踩前进。'},{name:'救护车',nameEn:'Ambulance',desc:'紧急运送病人去医院。'},{name:'消防车',nameEn:'Fire truck',desc:'红色的，遇到火灾灭火救人。'},{name:'警车',nameEn:'Police car',desc:'帮助警察巡逻抓坏人。'},{name:'公交车',nameEn:'Bus',desc:'大家一起乘坐。'},{name:'地铁',nameEn:'Subway',desc:'在地下跑的铁道列车。'},{name:'火箭',nameEn:'Rocket',desc:'能把宇航员送到太空。'},{name:'热气球',nameEn:'Balloon',desc:'彩色气球带篮子飞上天空。'},{name:'高铁',nameEn:'High-speed rail',desc:'非常快的中国火车。'}],
-  daily:[{name:'杯子',nameEn:'Cup',desc:'用来喝水。'},{name:'碗',nameEn:'Bowl',desc:'用来盛饭盛汤。'},{name:'筷子',nameEn:'Chopsticks',desc:'中国人吃饭用的两根细棍。'},{name:'勺子',nameEn:'Spoon',desc:'用来舀汤。'},{name:'牙刷',nameEn:'Toothbrush',desc:'每天早晚刷牙保护牙齿。'},{name:'毛巾',nameEn:'Towel',desc:'用来擦脸擦手。'},{name:'镜子',nameEn:'Mirror',desc:'可以看自己的样子。'},{name:'枕头',nameEn:'Pillow',desc:'睡觉时放在头下面。'},{name:'被子',nameEn:'Quilt',desc:'睡觉时盖在身上。'},{name:'书包',nameEn:'Schoolbag',desc:'装书和文具。'},{name:'雨伞',nameEn:'Umbrella',desc:'下雨时撑开挡雨。'},{name:'闹钟',nameEn:'Alarm',desc:'早上响铃提醒起床。'},{name:'剪刀',nameEn:'Scissors',desc:'用来剪纸。'}],
-  common:[{q:'四季是什么',a:'春夏秋冬，春天花开，夏天炎热，秋天落叶，冬天下雪。'},{q:'天为什么是蓝色',a:'太阳光射到地球时，蓝光最容易被大气散射。'},{q:'彩虹为什么有七种颜色',a:'阳光穿过雨滴时，不同颜色折射角度不同。'},{q:'冬天为什么会下雪',a:'空气中的水蒸气遇见冷空气凝结成冰晶落下来。'},{q:'鱼在水里怎么呼吸',a:'鱼用鳃呼吸，从水中吸取氧气。'},{q:'太阳为什么升起又落下',a:'地球在不停地自转，朝向太阳是白天，背向是黑夜。'},{q:'为什么要吃饭',a:'食物给我们提供能量和营养。'},{q:'为什么要刷牙',a:'牙刷清除牙齿上的细菌，防止蛀牙。'},{q:'影子怎么来的',a:'光沿直线传播，被物体挡住就形成了阴影。'},{q:'树叶秋天为什么变黄',a:'天气转冷，叶绿素分解，显出黄色。'},{q:'为什么要勤洗手',a:'手上有很多看不见的细菌，洗手可以冲走它们。'},{q:'气球为什么能飞',a:'里面充的氦气比空气轻，所以会向上飘。'}]
-};
-const GEO={
-  landforms:[{name:'平原',desc:'大片平坦的土地，适合种庄稼。'},{name:'山地',desc:'高出起伏的土地，有很多山峰和山谷。'},{name:'高原',desc:'海拔很高的大片平地，如青藏高原。'},{name:'盆地',desc:'四周高中间低，像一个大盆子。'},{name:'丘陵',desc:'比山矮、比平原高，起起伏伏的小山坡。'},{name:'沙漠',desc:'很少下雨，到处都是沙子，白天热晚上冷。'},{name:'草原',desc:'一望无际的绿色草地，有很多牛羊。'},{name:'森林',desc:'很多树木密集生长，空气清新。'},{name:'河流',desc:'弯弯曲曲的水流在地面上流淌。'},{name:'湖泊',desc:'大片被陆地包围的水域。'},{name:'海洋',desc:'地球上最大的水域，覆盖了百分之七十以上的面积。'},{name:'岛屿',desc:'四面环水的小块陆地。'}],
-  scenery:[{name:'长城',desc:'中国古代伟大建筑，像巨龙蜿蜒在崇山峻岭之间。'},{name:'故宫',desc:'北京最大的古代皇宫，红色的墙金色的瓦。'},{name:'兵马俑',desc:'陕西西安，成千上万的陶制士兵守护秦始皇。'},{name:'西湖',desc:'杭州美丽的湖泊，有断桥雷峰塔。'},{name:'泰山',desc:'五岳之首，历代皇帝在此祭天。'},{name:'桂林山水',desc:'山水甲天下，漓江两岸奇峰林立。'},{name:'黄山',desc:'安徽名山，有奇松怪石云海温泉。'},{name:'九寨沟',desc:'童话世界，湖水有蓝绿黄各种颜色。'},{name:'布达拉宫',desc:'西藏宫殿，建在红山上，金光闪闪。'},{name:'张家界',desc:'砂岩峰林，像石林耸立。'},{name:'敦煌莫高窟',desc:'千佛洞，有精美的壁画和佛像。'},{name:'三峡',desc:'长江壮美峡谷，两岸高山耸立。'}],
-  rivers:[{name:'长江',desc:'中国第一大河，长约6300公里，从青藏高原流到东海。'},{name:'黄河',desc:'中国的母亲河，河水携带泥沙所以发黄。'},{name:'珠江',desc:'南方大河，流经广州。'},{name:'黑龙江',desc:'中国与俄罗斯的界河。'},{name:'珠穆朗玛峰',desc:'世界最高峰，海拔8848米。'},{name:'泰山',desc:'五岳之尊。'},{name:'华山',desc:'以险峻著称。'},{name:'喜马拉雅山',desc:'世界最高的山脉。'}]
-};
-const HISTORY={
-  dynasties:[{name:'夏朝',period:'约公元前2070-前1600年',desc:'中国史书记载的第一个王朝，大禹治水建立。'},{name:'商朝',period:'约公元前1600-前1046年',desc:'用甲骨文记录，青铜器有名。'},{name:'周朝',period:'公元前1046-前256年',desc:'分为西周和东周，东周分春秋和战国。'},{name:'秦朝',period:'公元前221-前206年',desc:'秦始皇统一六国，统一文字货币度量衡，修长城。'},{name:'汉朝',period:'公元前206-公元220年',desc:'张骞出使西域，开辟丝绸之路，造纸术发明。'},{name:'三国',period:'公元220-280年',desc:'魏蜀吴三国鼎立，刘备曹操孙权。'},{name:'晋朝',period:'公元265-420年',desc:'分为西晋和东晋，王羲之写字有名。'},{name:'隋朝',period:'公元581-618年',desc:'隋文帝统一南北，隋炀帝开凿大运河。'},{name:'唐朝',period:'公元618-907年',desc:'最强大朝代之一，李白杜甫写诗，玄奘取经。'},{name:'宋朝',period:'公元960-1279年',desc:'经济文化发达，活字印刷术发明。'},{name:'元朝',period:'公元1271-1368年',desc:'蒙古人建立，疆域最大。'},{name:'明朝',period:'公元1368-1644年',desc:'修建紫禁城，郑和七下西洋。'},{name:'清朝',period:'公元1644-1912年',desc:'最后一个封建王朝，编四库全书。'}],
-  emperors:[{name:'黄帝',period:'',desc:'中华民族的共同祖先，传说发明文字音律医药舟车。'},{name:'大禹',period:'夏朝开创者',desc:'三过家门而不入，建立中国第一个王朝。'},{name:'秦始皇',period:'秦朝',desc:'统一六国，自称始皇帝。'},{name:'汉武帝',period:'西汉',desc:'派张骞出使西域，抗击匈奴。'},{name:'唐太宗',period:'唐朝',desc:'开创贞观之治，国力强盛。'},{name:'武则天',period:'唐朝',desc:'中国历史上唯一的女皇帝。'},{name:'成吉思汗',period:'大蒙古国',desc:'铁木真统一蒙古各部。'},{name:'明太祖',period:'明朝',desc:'朱元璋从农民成为皇帝。'},{name:'明成祖',period:'明朝',desc:'迁都北京，修建紫禁城，郑和下西洋。'},{name:'康熙帝',period:'清朝',desc:'平三藩收台湾，清朝最有作为的皇帝之一。'},{name:'乾隆帝',period:'清朝',desc:'在位60年，编撰四库全书。'}],
-  cultureIn:[{name:'四大发明',desc:'造纸术、印刷术、指南针和火药，中国的伟大贡献。'},{name:'丝绸之路',desc:'中国古代通往中亚和欧洲的商路。'},{name:'京剧',desc:'中国国粹，有唱念做打，生旦净丑。'},{name:'春节',desc:'中国最重要的节日，贴春联吃年夜饭发红包。'},{name:'端午节',desc:'农历五月初五，吃粽子赛龙舟，纪念屈原。'},{name:'中秋节',desc:'农历八月十五，吃月饼赏月全家团圆。'},{name:'十二生肖',desc:'鼠牛虎兔龙蛇马羊猴鸡狗猪，十二年轮回一次。'},{name:'二十四节气',desc:'根据太阳运行制定的农耕历法。'},{name:'书法',desc:'用毛笔写字的艺术。'},{name:'中医',desc:'中国传统医学，用草药针灸治病。'},{name:'太极拳',desc:'中国传统武术，动作缓慢柔和，强身健体。'}]
-};
-const SPACE={
-  origin:[{name:'宇宙大爆炸',desc:'约138亿年前，宇宙从一个很小的点爆炸开来，越变越大。'},{name:'地球的诞生',desc:'约46亿年前，宇宙尘埃岩石聚集形成地球。'},{name:'银河系',desc:'我们居住的星系，像一个巨大的旋转圆盘，有千亿颗星星。'},{name:'黑洞',desc:'宇宙中引力最强的天体，连光都跑不掉。'}],
-  solar:[{name:'太阳',desc:'太阳系的老大，自己就能发光发热，八大行星围着它转。'},{name:'水星',desc:'离太阳最近，跑得最快。'},{name:'金星',desc:'离地球最近，表面温度很高像烤箱。'},{name:'地球',desc:'我们的家园！蓝色星球，有海洋陆地和空气。'},{name:'火星',desc:'红色星球，科学家正在研究能不能让人类居住。'},{name:'木星',desc:'太阳系最大的行星，大到可以装一千多个地球！'},{name:'土星',desc:'最漂亮的行星，有一圈美丽的光环。'},{name:'天王星',desc:'躺着跑的行星，自转轴几乎倒在轨道上。'},{name:'海王星',desc:'离太阳最远，风超级大。'}],
-  earth:[{name:'地球的结构',desc:'外面薄地壳，中间地幔，最里面火热的地核。'},{name:'自转',desc:'地球自己转一圈24小时，就是一天，产生白天黑夜。'},{name:'公转',desc:'地球绕太阳转一圈365天，就是一年，产生四季。'},{name:'地球的水',desc:'地球表面百分之七十一都是海洋，太平洋最大。'},{name:'月亮',desc:'地球唯一的天然卫星，本身不发光，反射太阳光。'},{name:'大气层',desc:'地球外面包裹的空气，保护我们不被流星砸到。'},{name:'板块运动',desc:'地壳几大板块慢慢移动，造成山脉地震和火山。'}]
-};
-const EMOJI_MAP={
-  '📚':'书','🔢':'数字','🔤':'字母','🧬':'科学','🌍':'地球','🏯':'城堡','🚀':'火箭',
-  '🍎':'苹果','🍰':'蛋糕','🌸':'花','⭐':'星星','🎀':'蝴蝶结','🐼':'熊猫','🐯':'老虎','🦁':'狮子','🐘':'大象',
-  '🦒':'长颈鹿','🦘':'袋鼠','🐧':'企鹅','🐬':'海豚','🦓':'斑马','🦚':'孔雀','🐦':'小鸟','🐝':'蜜蜂',
-  '🦋':'蝴蝶','🐸':'青蛙','🐠':'金鱼','🐱':'猫咪','🐶':'小狗','🐰':'兔子','🐵':'猴子','🌕':'月亮',
-  '🌿':'植物','🌹':'玫瑰','🌵':'仙人掌','🌲':'松树','🍄':'蘑菇',
-  '🚗':'汽车','🚂':'火车','✈️':'飞机','🚢':'轮船','🚑':'救护车','🚒':'消防车','🚓':'警车','🚌':'公交车',
-  '🚲':'自行车','🚇':'地铁','☂️':'雨伞','⏰':'闹钟','✂️':'剪刀','✈':'飞机','🎈':'气球',
-  '🌏':'地球','🏔️':'山','🌳':'森林','🌊':'海洋','🏜️':'沙漠','🌼':'花朵','🦅':'老鹰',
-  '🌅':'日出','🌄':'山峰日出','⛩':'神社','🏛':'建筑','🏞':'国家公园','🗿':'石像','🏕':'露营','🌠':'流星',
-  '🐉':'龙','🎋':'竹子','🎑':'赏月','🧧':'红包','🐂':'牛','🐎':'马','🐏':'羊',
-  '🐓':'鸡','🐕':'狗','🐖':'猪','🐀':'老鼠','🍚':'米饭','🌾':'麦田','🍅':'番茄',
-  '🥣':'碗','🥢':'筷子','🥄':'勺子','👤':'人物','✋':'手','👀':'眼睛','👃':'鼻子','👂':'耳朵',
-  '🦶':'脚','💇':'头发','☀️':'太阳','☁️':'云','🌧️':'雨','❄️':'雪','⚡':'闪电','🌈':'彩虹',
-  '🔭':'望远镜','👩‍🚀':'宇航员','🛰️':'卫星','🌌':'银河','☄️':'彗星','🦕':'恐龙','🐚':'贝壳','🌺':'花','🌻':'向日葵',
-  '🏰':'城堡','⛩':'门','🗾':'地图','🎏':'鲤鱼旗','🎐':'风铃','🎎':'人偶',
-  '🏮':'灯笼','🎭':'面具','🎪':'马戏团','🎨':'绘画',
-  '🕐':'一点','🕑':'两点','🕒':'三点','🕓':'四点','🕔':'五点','🕕':'六点','🕖':'七点',
-  '🕗':'八点','🕘':'九点','🕙':'十点','🕚':'十一点','🕛':'十二点',
-  '🍦':'冰淇淋','🍭':'棒棒糖','🍫':'巧克力','🍩':'甜甜圈','🍪':'饼干',
-  '🥛':'牛奶','🍹':'果汁','🧃':'果汁','⛰':'山','🗻':'富士山','🏔':'雪山','🌋':'火山',
-  '🏝':'小岛','🏖':'沙滩','🌆':'城市','🏙':'建筑','🌉':'桥',
-  '🏥':'医院','🏦':'银行','🏨':'酒店','🏫':'学校','🏪':'商店',
-  '🥼':'白大褂','🩺':'听诊器','🔮':'水晶球','💎':'钻石','🏅':'金牌'
-};
-function noEmoji(s){if(!s)return'';let r=s;for(let k in EMOJI_MAP){r=r.split(k).join('')}return r}
-let synth=window.speechSynthesis;
-function speak(text){if(!text)return;synth.cancel();const clean=em2text(text);const u=new SpeechSynthesisUtterance(clean);u.rate=0.85;u.pitch=1.18;u.lang=clean.match(/[a-zA-Z]/)&&!clean.match(/[\u4e00-\u9fa5]/)?'en-US':'zh-CN';const voices=synth.getVoices();const v=voices.find(v=>v.lang===u.lang)||voices.find(v=>v.lang.includes('zh')&&u.lang.includes('zh'))||voices[0];if(v)u.voice=v;synth.speak(u);}
-function speakEn(text){if(!text)return;synth.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=0.9;u.pitch=1.1;const voices=synth.getVoices();const v=voices.find(v=>v.lang.startsWith('en'))||voices[0];if(v)u.voice=v;synth.speak(u);}
-function em2text(s){if(!s)return'';let r=s;Object.keys(EMOJI_MAP).forEach(k=>{r=r.split(k).join(EMOJI_MAP[k]+' ')});return r}
-function speakBilingual(enText,zhText){if(!enText&&!zhText)return;synth.cancel();const voices=synth.getVoices();if(enText){const u=new SpeechSynthesisUtterance(enText);u.lang='en-US';u.rate=0.9;u.pitch=1.1;const v=voices.find(v=>v.lang.startsWith('en'))||voices[0];if(v)u.voice=v;synth.speak(u)}if(zhText){const u=new SpeechSynthesisUtterance(zhText);u.lang='zh-CN';u.rate=0.85;u.pitch=1.18;const v=voices.find(v=>v.lang==='zh-CN')||voices.find(v=>v.lang.includes('zh'))||voices[0];if(v)u.voice=v;synth.speak(u)}}
-function celebrate(){const colors=['#f48fb1','#f9c74f','#90caf9','#a5d6a7','#ce93d8'];for(let i=0;i<30;i++){const d=document.createElement('div');d.style.position='fixed';d.style.left=Math.random()*100+'vw';d.style.top='-10px';d.style.width='8px';d.style.height='8px';d.style.background=colors[Math.floor(Math.random()*colors.length)];d.style.borderRadius='50%';d.style.zIndex='100';d.style.transition='top 1.2s ease-in, opacity 1.2s';document.body.appendChild(d);requestAnimationFrame(()=>{d.style.top='110vh';d.style.opacity='0'});setTimeout(()=>d.remove(),1300)}}
-
-/* ===== 学习统计 ===== */
-const DT=new Date().toISOString().slice(0,10);
-function getStats(){let s=localStorage.getItem('kidsStats');try{s=JSON.parse(s)||{}}catch(e){s={}};if(!s.date||s.date!==DT){s.todayList=[];s.today=0;s.date=DT}if(s.total===undefined)s.total=0;if(!s.plan)s.plan=20;if(!Array.isArray(s.todayList))s.todayList=[];if(!Array.isArray(s.history))s.history=[];return s}
-function saveStats(o){localStorage.setItem('kidsStats',JSON.stringify(o))}
-function recordStat(title){if(!title)return;const o=getStats();o.total++;o.today++;o.todayList.push({t:title.trim(),time:new Date().toLocaleTimeString(),date:DT});if(o.todayList.length>30)o.todayList=o.todayList.slice(-30);o.history.push({t:title.trim(),time:new Date().toLocaleTimeString(),date:DT});if(o.history.length>200)o.history=o.history.slice(-200);saveStats(o);updateStatsUI();}
-function updateStatsUI(){const o=getStats();$('totalCount').textContent=o.total;$('todayCount').textContent=o.today;$('planGoal').textContent=o.plan||20;const pct=Math.min(100,Math.round(o.today/(o.plan||20)*100));$('planBar').style.width=pct+'%';$('planText').textContent=(lang==='zh'?'计划进度 ':'Plan ')+o.today+'/'+(o.plan||20)+' ('+pct+'%)';const tl=$('todayList');tl.innerHTML='';const see=o.todayList.slice().reverse();see.forEach(item=>{const sp=document.createElement('span');sp.className='today-item';sp.textContent=item.t.replace(/[\u4e00-\u9fa5]/g,'$&').slice(0,12);if(!sp.textContent)sp.textContent='学习内容';tl.appendChild(sp)});$('totalCount').parentElement.onclick=()=>showHistory('total');$('todayCount').parentElement.onclick=()=>showHistory('today');}
-function setPlanPrompt(){const cur=getStats().plan||20;const n=prompt(lang==='zh'?'设置今日学习目标数量：':'Set daily goal:',String(cur));if(n!==null&&!isNaN(n)&&Number(n)>0){const o=getStats();o.plan=Number(n);saveStats(o);updateStatsUI();}}
-function learn(title){recordStat(title);celebrate();}
 
 /* ===== 数学引擎 ===== */
-function mkRng(s){let x=s;return()=>{x=(x*16807+0)%2147483647;return(x-1)/2147483646}}
-function mkFix(R,N,s,type){const r=mkRng(s);const o=[];while(o.length<N){let a=Math.floor(r()*R)+1;let b=Math.floor(r()*R)+1;if(type==='add'){if(a+b>R)continue;o.push({a,b,op:'+',ans:a+b})}else{if(a<=b){let t=a;a=b;b=t}o.push({a,b,op:'-',ans:a-b})}}return o}
-function mkRan(R,N,type){const o=[];while(o.length<N){let a=Math.floor(Math.random()*R)+1;let b=Math.floor(Math.random()*R)+1;if(type==='add'){if(a+b>R)continue;o.push({a,b,op:'+',ans:a+b})}else{if(a<=b){let t=a;a=b;b=t}o.push({a,b,op:'-',ans:a-b})}}return o}
-const MR=[{r:10,f:50,rn:50,s:1,t:'add'},{r:10,f:50,rn:50,s:10001,t:'sub'},{r:20,f:50,rn:50,s:20001,t:'add'},{r:20,f:50,rn:50,s:30001,t:'sub'},{r:100,f:50,rn:50,s:40001,t:'add'},{r:100,f:50,rn:50,s:50001,t:'sub'},{r:200,f:50,rn:100,s:60001,t:'add'},{r:200,f:50,rn:100,s:70001,t:'sub'},{r:1000,f:100,rn:500,s:80001,t:'add'},{r:1000,f:100,rn:500,s:90001,t:'sub'}];
-let MB={};function buildMB(){MB={};MR.forEach(x=>{MB[x.r+'_'+x.t]={fixed:mkFix(x.r,x.f,x.s,x.t),random:mkRan(x.r,x.rn,x.t),r:x.r,type:x.t}})}
+function seeded(s){let x=s||12345;return function(){x=(x*16807)%2147483647;return (x&0x7fffffff)/2147483647;};}
+function mkFix(range,type,seedBase){const rng=seeded(seedBase);const out=[];for(let i=0;i<12;i++){let a,b,ans,op;const max=parseInt(range,10);if(type==='add'){a=Math.floor(rng()*(max-1))+1;b=Math.floor(rng()*(max-a))+1;ans=a+b;op='+';}else if(type==='sub'){a=Math.floor(rng()*(max-1))+2;b=Math.floor(rng()*(a-1))+1;ans=a-b;op='-';}else if(type==='mul'){const m=Math.min(max,10);a=Math.floor(rng()*m)+1;b=Math.floor(rng()*m)+1;ans=a*b;op='×';}else if(type==='div'){b=Math.floor(rng()*Math.min(max,9))+1;ans=Math.floor(rng()*Math.min(max,9))+1;a=b*ans;op='÷';}let opts=new Set([ans]);while(opts.size<4){let v=ans+Math.floor(rng()*max*2)-max;if(v>=0)opts.add(v);}opts=[...opts].sort(()=>rng()-0.5).slice(0,4);out.push({q:`${a} ${op} ${b} = ?`,ans:String(ans),opts:opts.map(String),tag:range+'_'+type});}return out;}
+function mkRng(range,type){const out=[];for(let i=0;i<12;i++){let a,b,ans,op;const max=parseInt(range,10);if(type==='add'){a=Math.floor(Math.random()*(max-1))+1;b=Math.floor(Math.random()*(max-a))+1;ans=a+b;op='+';}else if(type==='sub'){a=Math.floor(Math.random()*(max-1))+2;b=Math.floor(Math.random()*(a-1))+1;ans=a-b;op='-';}else if(type==='mul'){const m=Math.min(max,10);a=Math.floor(Math.random()*m)+1;b=Math.floor(Math.random()*m)+1;ans=a*b;op='×';}else if(type==='div'){b=Math.floor(Math.random()*Math.min(max,9))+1;ans=Math.floor(Math.random()*Math.min(max,9))+1;a=b*ans;op='÷';}let opts=new Set([ans]);while(opts.size<4){let v=ans+Math.floor(Math.random()*max*2)-max;if(v>=0)opts.add(v);}opts=[...opts].sort(()=>Math.random()-0.5).slice(0,4);out.push({q:`${a} ${op} ${b} = ?`,ans:String(ans),opts:opts.map(String),tag:range+'_'+type});}return out;}
+function buildMB(){const bank={};[10,20,100,200].forEach(r=>{['add','sub','mul','div'].forEach(t=>{const k=r+'_'+t;bank[k]=[].concat(mkFix(r,t,r*10+t.length),mkRng(r,t));bank[k].sort(()=>Math.random()-0.5);});});return bank;}
+let MATH_BANK=buildMB();
+let QA={current:null,list:[],idx:0};
 
-/* ===== 导航与渲染 ===== */
-function renderHome(){
-  curSubj='';curTab='';
-  $('homeBtn').style.display='none';
-  $('hero').style.display='block';$('statBoard').style.display='block';
-  $('content').innerHTML='';$('tabArea').innerHTML='';
-  const g=$('subGrid');g.innerHTML='';
-  SUBJS.forEach(s=>{
-    const d=document.createElement('button');d.className='subj';d.style.animation='pop .5s ease both';
-    const name=lang==='en'?s.en:s.cn;
-    d.innerHTML='<div style="font-size:22px;line-height:1.1">'+s.em+'</div><div style="margin-top:3px;font-size:13px">'+name+'</div>';
-    d.onclick=()=>renderSubject(s.id,curStage);g.appendChild(d)
-  })
-}
-function renderSubject(id,stage){
-  curSubj=id;curStage=stage;
-  $('homeBtn').style.display='flex';
-  $('hero').style.display='none';$('statBoard').style.display='none';
-  const ta=$('tabArea');const box=$('content');box.innerHTML='';ta.innerHTML='';
-  const defs=getDefs(id,stage);if(!defs){renderHome();return}
-  ta.innerHTML='<div class="tabs" id="tabs"></div>';
-  const tb=$('tabs');
-  defs.forEach((d,i)=>{const b=document.createElement('button');b.className='tab'+(i==0?' on':'');b.textContent=d.label;b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.className='tab');b.className='tab on';renderTab(id,d.key,stage,box)};tb.appendChild(b)});
-  renderTab(id,defs[0].key,stage,box);
-}
-function getDefs(id,stage){
-  if(id==='chinese')return[{key:'numbers',label:t('numbers','chinese')},{key:'hanzi',label:t('hanzi','chinese')},{key:'poems',label:t('poems','chinese')},{key:'songs',label:t('songs','chinese')},{key:'fables',label:t('fables','chinese')}];
-  if(id==='math')return[{key:'count',label:t('count','math')},{key:'addition',label:t('add','math')},{key:'subtraction',label:t('sub','math')},{key:'shapes',label:t('shape','math')},{key:'size',label:t('size','math')},{key:'color',label:t('color','math')}];
-  if(id==='english')return[{key:'letters',label:t('letters','english')},{key:'words',label:t('words','english')},{key:'phrases',label:t('phrases','english')},{key:'sentences',label:t('sentences','english')}];
-  if(id==='science')return[{key:'animals',label:t('animals','science')},{key:'plants',label:t('plants','science')},{key:'transport',label:t('transport','science')},{key:'daily',label:t('daily','science')},{key:'common',label:t('common','science')}];
-  if(id==='geo')return[{key:'landforms',label:t('landforms','geo')},{key:'scenery',label:t('scenery','geo')},{key:'rivers',label:t('rivers','geo')}];
-  if(id==='history')return[{key:'dynasties',label:t('dynasties','history')},{key:'emperors',label:t('emperors','history')},{key:'cultureIn',label:t('cultureIn','history')}];
-  if(id==='space')return[{key:'origin',label:t('origin','space')},{key:'solar',label:t('solar','space')},{key:'earth',label:t('earth','space')}];
-  return null;
-}
-function renderTab(id,tab,stage,box){
-  if(id==='chinese')renderChinese(tab,box,stage);
-  else if(id==='math')renderMath(tab,box,stage);
-  else if(id==='english')renderEnglish(tab,box,stage);
-  else if(id==='science')renderScience(tab,box,stage);
-  else if(id==='geo')renderGeo(tab,box,stage);
-  else if(id==='history')renderHistory(tab,box,stage);
-  else if(id==='space')renderSpace(tab,box,stage);
-}
-function renderChinese(tab,box,stage){
-  if(tab==='numbers'){
-    box.innerHTML='<div class="panel"><div class="panel-title">'+t('numbers','chinese')+'</div><div class="grid-5" id="cg1"></div></div>';
-    const g=$('cg1');[1,2,3,4,5,6,7,8,9,10].forEach(n=>{const c=document.createElement('div');c.className='cell';c.style.fontSize='22px';c.innerHTML='<div class="cell-big">'+n+'</div>';c.onclick=()=>{speak(String(n));learn('数字'+n)};g.appendChild(c)});
-    if(stage==='s4'){const d=document.createElement('div');d.className='panel';d.innerHTML='<div class="panel-title">11-100</div><div class="grid-10" id="cg2"></div>';box.appendChild(d);const g2=$('cg2');for(let i=11;i<=100;i++){const c=document.createElement('div');c.className='cell';c.style.minHeight='48px';c.style.fontSize='14px';c.textContent=i;c.onclick=()=>{speak(String(i));learn('数字'+i)};g2.appendChild(c)};const d2=document.createElement('div');d2.className='panel';d2.innerHTML='<div class="panel-title">100-1000</div><div class="grid-10" id="cg3"></div>';box.appendChild(d2);const g3=$('cg3');for(let i=100;i<=1000;i+=10){const c=document.createElement('div');c.className='cell';c.style.minHeight='48px';c.style.fontSize='14px';c.textContent=i;c.onclick=()=>{speak(String(i));learn('数字'+i)};g3.appendChild(c)}}
-  }else if(tab==='hanzi'){
-    const src=stage==='s2'?HANZI.slice(0,20):HANZI;box.innerHTML='';
-    src.forEach((h,i)=>{const d=document.createElement('div');d.className='panel';d.style.animation='pop .4s ease '+(i*0.02)+'s backwards';d.innerHTML='<div class="panel-title" style="font-size:28px">'+h.ch+' <span class="cell-pinyin">'+h.py+'</span> <span class="cell-en">'+(lang==='en'?h.en:'')+'</span></div><div class="panel-body">'+(lang==='en'?h.en:'拼音 '+h.py)+'</div>';d.onclick=()=>{speak(h.ch);learn('汉字 '+h.ch)};box.appendChild(d)});
-    if(stage==='s4'){const d=document.createElement('div');d.className='panel';d.innerHTML='<div class="panel-title">扩展汉字</div><div class="grid-10" id="hzx"></div>';box.appendChild(d);const gx=$('hzx');HANZI_EXT.forEach(ch=>{const c=document.createElement('div');c.className='cell';c.style.fontSize='18px';c.textContent=ch;c.onclick=()=>{speak(ch);learn('汉字 '+ch)};gx.appendChild(c)})}
-  }else if(tab==='poems'){box.innerHTML='';POEMS.forEach((p,i)=>{const d=document.createElement('div');d.className='panel';d.style.animation='pop .4s ease '+(i*0.015)+'s backwards';d.innerHTML='<div class="panel-title">'+p.title+' <span style="font-size:13px;color:#888;font-weight:400">'+p.author+'</span></div><div class="panel-body" style="white-space:pre-line">'+p.content+'</div>';d.onclick=()=>{speak(noEmoji(p.title)+'，'+noEmoji(p.author)+'。'+noEmoji(p.content));learn(p.title)};box.appendChild(d)})}
-  else if(tab==='songs'){SONGS.forEach((s,i)=>{const d=document.createElement('div');d.className='panel';d.style.animation='pop .4s ease '+(i*0.02)+'s backwards';d.innerHTML='<div class="panel-title">'+s.title+'</div><div class="panel-body">'+s.content+'</div>';d.onclick=()=>{speak(noEmoji(s.title)+'。'+noEmoji(s.content));learn(s.title)};box.appendChild(d)})}
-  else if(tab==='fables'){const list=stage==='s2'?FABLES.slice(0,5):FABLES;list.forEach((f,i)=>{const d=document.createElement('div');d.className='panel';d.style.animation='pop .4s ease '+(i*0.015)+'s backwards';d.innerHTML='<div class="panel-title">'+f.title+'</div><div class="panel-body">'+f.content+'</div>';d.onclick=()=>{speak(noEmoji(f.title)+'。'+noEmoji(f.content));learn(f.title)};box.appendChild(d)})}
-}
+/* 趣味反馈语和emoji */
+const ENCOURAGE = ['太棒了！🎉','你真聪明！🌟','小数学家！🏆','继续加油！🚀','好厉害呀！💪','答对了！🍭','了不起！🎈','超级棒！🌈'];
+const ENC_EMOJI = ['🎉','🌟','🏆','🍭','🎈','🌈','🦄','🎊'];
+function randEnc(){return ENCOURAGE[Math.floor(Math.random()*ENCOURAGE.length)];}
+function randEmo(){return ENC_EMOJI[Math.floor(Math.random()*ENC_EMOJI.length)];}
 
-function renderMath(tab,box,stage){
-  if(tab==='count'){
-    if(stage==='s2'){
-      box.innerHTML='<div class="panel"><div class="panel-title">'+t('count','math')+' 1-20</div><div class="grid-10" id="mc"></div></div>';
-      const g=$('mc');for(let i=1;i<=20;i++){const c=document.createElement('div');c.className='cell';c.style.minHeight='54px';c.textContent=i;c.onclick=()=>{speak(String(i));learn('数数 '+i)};g.appendChild(c)}
-    }else{
-      box.innerHTML='<div class="panel"><div class="panel-title">'+t('count','math')+' 1-20</div><div class="grid-10" id="mc1"></div></div>';
-      box.innerHTML+='<div class="panel"><div class="panel-title">21-100</div><div class="grid-10" id="mc2"></div></div>';
-      box.innerHTML+='<div class="panel"><div class="panel-title">100-1000</div><div class="grid-10" id="mc3"></div></div>';
-      const g1=$('mc1');for(let i=1;i<=20;i++){const c=document.createElement('div');c.className='cell';c.style.minHeight='54px';c.textContent=i;c.onclick=()=>{speak(String(i));learn('数数 '+i)};g1.appendChild(c)}
-      const g2=$('mc2');for(let i=21;i<=100;i++){const c=document.createElement('div');c.className='cell';c.style.minHeight='54px';c.style.fontSize='14px';c.textContent=i;c.onclick=()=>{speak(String(i));learn('数数 '+i)};g2.appendChild(c)}
-      const g3=$('mc3');for(let i=100;i<=1000;i+=10){const c=document.createElement('div');c.className='cell';c.style.minHeight='54px';c.style.fontSize='14px';c.textContent=i;c.onclick=()=>{speak(String(i));learn('数数 '+i)};g3.appendChild(c)}
-    }return;
-  }
-  if(tab==='shapes'){
-    box.innerHTML='<div class="panel"><div class="panel-title">'+t('shape','math')+'</div><div class="grid-5" id="shg"></div></div>';
-    const g=$('shg');SHAPES.forEach(s=>{
-      const c=document.createElement('div');c.className='cell';
-      c.innerHTML='<div style="font-size:32px;line-height:1">'+s.em+'</div><div style="font-size:14px;font-weight:800;color:#ad1457;margin-top:4px">'+(lang==='en'?s.en:s.zh)+'</div>';
-      c.onclick=()=>{speakBilingual(s.en,s.zh);learn((lang==='en'?'Shape ':'形状 ')+(lang==='en'?s.en:s.zh))};
-      g.appendChild(c);
-    });
-    return;
-  }
-  if(tab==='size'){
-    box.innerHTML='<div class="panel"><div class="panel-title">'+t('size','math')+'</div><div class="grid" id="szg"></div></div>';
-    const g=$('szg');SIZES.forEach(s=>{
-      const c=document.createElement('div');c.className='cell';
-      const desc=lang==='en'?s.edesc:s.zdesc;
-      c.innerHTML='<div style="font-size:28px;line-height:1">'+s.em+'</div><div style="font-size:14px;font-weight:800;color:#ad1457;margin-top:4px">'+(lang==='en'?s.en:s.zh)+'</div><div style="font-size:11px;color:#666;margin-top:2px">'+desc+'</div>';
-      c.onclick=()=>{speakBilingual(s.en,s.zh+'，'+desc);learn('大小 '+s.zh)};
-      g.appendChild(c);
-    });
-    return;
-  }
-  if(tab==='color'){
-    box.innerHTML='<div class="panel"><div class="panel-title">'+t('color','math')+'</div><div class="grid-5" id="clg"></div></div>';
-    const g=$('clg');COLORS.forEach(c=>{
-      const cell=document.createElement('div');cell.className='cell';
-      cell.innerHTML='<div style="font-size:32px;line-height:1">'+c.em+'</div><div style="font-size:14px;font-weight:800;color:#ad1457;margin-top:4px">'+(lang==='en'?c.en:c.zh)+'</div>';
-      cell.onclick=()=>{speakBilingual(c.en,c.zh);learn('颜色 '+(lang==='en'?c.en:c.zh))};
-      g.appendChild(cell);
-    });
-    return;
-  }
-  const add=tab==='addition';const type=add?'add':'sub';
-  const label=add?(lang==='en'?'Addition':'趣味加法'):(lang==='en'?'Subtraction':'趣味减法');
-  box.innerHTML='<div class="panel"><div class="panel-title">'+label+'</div><div class="panel-body">'+t('choose','math')+'</div><div id="ml"></div></div>';
-  const md=$('ml');
-  const lv=stage==='s2'?[{k:'10',n:'10以内',c:'#f48fb1'},{k:'20',n:'20以内',c:'#ce93d8'}]:[{k:'10',n:'10以内',c:'#f48fb1'},{k:'20',n:'20以内',c:'#ce93d8'},{k:'100',n:'100以内',c:'#90caf9'},{k:'200',n:'200以内',c:'#a5d6a7'},{k:'1000',n:'1000以内',c:'#f9c74f'}];
-  lv.forEach(l=>{const b=document.createElement('button');b.className='card-btn';b.style.cssText='background:linear-gradient(135deg,'+l.c+','+l.c+');box-shadow:0 5px 0 rgba(0,0,0,.15);max-width:320px;width:90%;padding:16px;border:none;font-size:18px;border-radius:24px';b.textContent=l.n+label;b.onclick=()=>startMath(l.k,type);md.appendChild(b)});
-}
-function startMath(R,type){
-  const data=MB[R+'_'+type];if(!data)return;
-  const pool=[...data.fixed,...data.random].sort(()=>Math.random()-0.5);
-  let idx=0,answered=false;const total=Math.min(pool.length,50);
-  const box=$('content');box.innerHTML='';
-  const card=document.createElement('div');card.className='panel';card.id='mathCard';
-  card.innerHTML='<div style="text-align:center"><div class="prog" id="mp"></div><div class="quiz" id="mq">?</div><div id="mviz" style="font-size:28px;margin:6px 0;min-height:36px"></div><div class="ans" id="ma"></div><div class="fb" id="mf"></div><button class="back-btn" id="mnxt" style="margin-top:6px" disabled>'+t('next','math')+'</button><button class="back-btn" style="margin-top:6px;margin-left:8px" onclick="renderSubject(&quot;math&quot;,curStage)">返回</button></div>';
-  box.appendChild(card);
-  function showQ(q){answered=false;prog(idx+1,total);const say=lang==='en'?('What is '+q.a+(type==='add'?' plus ':' minus ')+q.b):(q.a+(type==='add'?'加':'减')+q.b+'等于几');speak(say);$('mq').textContent=q.a+' '+q.op+' '+q.b+' = ?';const em=['🍎','🍰','🌸','⭐'];const e=em[idx%em.length];$('mviz').textContent=(type==='add'?e.repeat(Math.min(q.a,6))+' ＋ '+e.repeat(Math.min(q.b,6)):'🎁'.repeat(Math.min(q.a,6))+' － '+String.fromCodePoint(0x274C).repeat(Math.min(q.b,6)));$('mf').textContent='';$('mf').className='fb';const nxt=$('mnxt');nxt.disabled=true;nxt.style.opacity='0.5';nxt.textContent=t('next','math');let wrongs=new Set();while(wrongs.size<2){let w=Math.floor(Math.random()*R*1.2);if(w!==q.ans&&w>=0)wrongs.add(w)}const opts=[q.ans,...wrongs].sort(()=>Math.random()-0.5);const abox=$('ma');abox.innerHTML='';opts.forEach((n,i)=>{const btn=document.createElement('button');btn.className='ans-btn';btn.style.cssText='background:linear-gradient(135deg,#90caf9,#42a5f5);box-shadow:0 4px 0 #1976d2;font-size:24px;border:none';btn.textContent=n;btn.style.animation='pop .4s ease '+(i*0.06)+'s backwards';abox.appendChild(btn);btn.onclick=()=>{if(answered)return;answered=true;if(n===q.ans){btn.style.background='#66bb6a';btn.style.boxShadow='0 4px 0 #388e3c';$('mf').textContent=t('correct','math');$('mf').className='fb ok';learn('数学题 '+q.a+' '+q.op+' '+q.b);celebrate();speak(String(q.ans));nxt.disabled=false;nxt.style.opacity='1';idx++;if(idx>=total){nxt.textContent=t('finish','math');$('mf').textContent=t('finish','math')}}else{btn.style.background='#ef5350';btn.style.boxShadow='0 4px 0 #c62828';$('mf').textContent=t('wrong','math');$('mf').className='fb err';speak(lang==='en'?'Try again':'再想想');setTimeout(()=>{btn.style.background='';btn.style.boxShadow='';$('mf').textContent='';answered=false},1200)}}});}
-  $('mnxt').onclick=()=>{if(idx>=total){renderSubject('math',curStage)}else{showQ(pool[idx])}};
-  showQ(pool[0]);
-  function prog(cur,tot){const b=$('mp');b.innerHTML='';for(let i=1;i<=tot;i++){const d=document.createElement('div');d.className='dot'+(i<=cur?' ok':'');b.appendChild(d)}}
-}
+/* 数学语音：把运算符读成中文 */
+function mathSpeak(qStr){const txt=qStr.replace(/\\+/g,'加').replace(/\\-/g,'减').replace(/×/g,'乘').replace(/÷/g,'除').replace(/= \\?/g,'等于多少');speak(txt);}
 
-function renderEnglish(tab,box,stage){
-  if(tab==='letters'){
-    box.innerHTML='<div class="panel"><div class="panel-title">26 Letters</div><div class="grid-5" id="ag"></div></div>';
-    const g=$('ag');ABC.forEach(L=>{const c=document.createElement('div');c.className='cell';c.innerHTML='<div class="cell-big">'+L+'</div><div class="cell-en">'+L.toLowerCase()+'</div>';c.onclick=()=>{speakBilingual(L.toLowerCase(),'字母 '+L);learn('字母 '+L)};g.appendChild(c)});
-  }else if(tab==='words'){
-    const cats=Object.keys(EWORDS);box.innerHTML='';const container=document.createElement('div');container.className='panel';
-    const h=document.createElement('div');h.className='panel-title';h.textContent=t('words','english');container.appendChild(h);
-    cats.forEach(cat=>{const arr=EWORDS[cat];const sec=document.createElement('h4');sec.style.cssText='color:#ad1457;margin:12px 0 4px;font-size:17px';sec.textContent=cat;container.appendChild(sec);const grid=document.createElement('div');grid.className='grid-5';arr.forEach(it=>{const c=document.createElement('div');c.className='cell';c.style.cssText='min-height:60px;cursor:pointer;font-size:13px';c.innerHTML='<div class="cell-big">'+it.w.replace(/</g,'&lt;')+'</div><div class="cell-en">'+it.t+'</div>';c.onclick=()=>{speakBilingual(it.w,it.t);learn('单词 '+it.w)};grid.appendChild(c)});container.appendChild(grid)});
-    box.appendChild(container);
-  }else if(tab==='phrases'){box.innerHTML='';PHRASES.forEach((p,i)=>{const d=document.createElement('div');d.className='panel';d.style.cursor='pointer';d.innerHTML='<div class="panel-title" style="font-size:20px">'+p.en+'</div><div class="panel-body">'+p.zh+'</div>';d.onclick=()=>{speakBilingual(p.en,p.zh);learn(p.en)};box.appendChild(d)})}
-  else if(tab==='sentences'){box.innerHTML='';SENTENCES.forEach((s,i)=>{const d=document.createElement('div');d.className='panel';d.style.cursor='pointer';d.innerHTML='<div class="panel-title" style="font-size:18px">'+s.en+'</div><div class="panel-body">'+s.zh+'</div>';d.onclick=()=>{speakBilingual(s.en,s.zh);learn(s.en)};box.appendChild(d)})}
-  else if(tab==='enStories'){const list=stage==='s2'?FABLES.slice(0,5):FABLES;box.innerHTML='';list.forEach((f,i)=>{const d=document.createElement('div');d.className='panel';d.style.cursor='pointer';d.innerHTML='<div class="panel-title">'+f.title+'</div><div class="panel-body">'+f.content+'</div>';d.onclick=()=>{speak(noEmoji(f.title)+'。'+noEmoji(f.content));learn(f.title)};box.appendChild(d)})}
-}
+/* 弹窗式算术练习 */
+function openMathQuiz(range,type){S.page=0;const k=range+'_'+type;const pool=(MATH_BANK[k]||[]).slice(0,10);QA.list=pool;QA.idx=0;const titleMap={add:'加法',sub:'减法',mul:'乘法',div:'除法'};const title=`${range=='10'||range=='20'?range+'以内':range+'以内'}${titleMap[type]}`;const box=document.getElementById('quizBox');box.innerHTML=`<div class="modalTitle"><span>🧮 ${title}</span><button class="modalClose" onclick="closeMathQuiz()">✕</button></div><div id="quizInner"></div>`;document.getElementById('quizModal').classList.add('active');showMathQ();}
+function closeMathQuiz(){document.getElementById('quizModal').classList.remove('active');QA={current:null,list:[],idx:0};}
+function prevQ(){if(QA.idx>0){QA.idx--;showMathQ();}}
+function showMathQ(){const inner=document.getElementById('quizInner');const q=QA.list[QA.idx];if(!q){inner.innerHTML=`<div style="padding:30px 0;text-align:center"><div style="font-size:80px;margin-bottom:10px">🎉</div><div style="font-size:22px;font-weight:900;color:#ff6b6b;margin-bottom:8px">练习完成！你真棒！</div><div style="font-size:15px;color:#678">答对了 ${QA.list.length} 道题目，小数学家！🏆</div><div style="margin-top:18px"><button class="pageBtn" onclick="closeMathQuiz()">收起</button></div></div>`;speak('练习完成，你真棒！');return;}inner.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:13px;color:#678;font-weight:700"><span>题目 ${QA.idx+1} / ${QA.list.length}</span><span id="qScore">${'⭐'.repeat(QA.idx)}</span></span></div><div class="qaBox"><div class="q">${q.q}</div><div class="ansGrid">${q.opts.map((o,oidx)=>`<div class="ansBtn" id="ansBtn_${oidx}" onclick="mathPick(this,'${o}','${q.ans}')">${o}</div>`).join('')}</div></div><div style="display:flex;justify-content:space-between;gap:10px;margin-top:14px"><button class="pageBtn" ${QA.idx===0?'disabled':''} onclick="prevQ()">⬅️ 上一题</button><button class="pageBtn" onclick="closeMathQuiz()">取消</button></div>`;const prog=Math.round(((QA.idx)/QA.list.length)*100);inner.innerHTML+=`<div class="progBar" style="margin-top:14px"><i style="width:${prog}%"></i></div>`;mathSpeak(q.q);}
+function mathPick(el,pick,ans){if(el.classList.contains('right')||el.classList.contains('wrong'))return;const btns=document.querySelectorAll('.ansBtn');btns.forEach(b=>b.style.pointerEvents='none');if(pick===ans){el.classList.add('right');speak(randEnc());record({subject:'数学',tag:(QA.list[QA.idx]||{}).tag||'math',title:(QA.list[QA.idx]||{}).q||'数学题'});celebEmoji(randEmo(),randEnc());setTimeout(()=>{QA.idx++;showMathQ();},1200);}else{el.classList.add('wrong');speak('再努力想一想');setTimeout(()=>{btns.forEach(b=>b.style.pointerEvents='');},600);}}
 
-function renderScience(tab,box){
-  const src=SCIENCE[tab]||[];box.innerHTML='';
-  src.forEach((item,i)=>{
-    const name=tab==='common'?(lang==='en'?'Common Sense':item.q):(lang==='en'?(item.nameEn||item.name):item.name);
-    const d=document.createElement('div');d.className='panel';d.style.animation='pop .4s ease '+(i*0.02)+'s backwards';
-    let text=item.desc;if(tab==='common')text=item.a;
-    d.innerHTML='<div class="panel-title">'+name+'</div><div class="panel-body">'+text+'</div>';
-    d.onclick=()=>{speak(noEmoji(name)+'。'+noEmoji(text));learn(name)};box.appendChild(d)
-  })
-}
-function renderGeo(tab,box){const src=GEO[tab]||[];box.innerHTML='';src.forEach((item,i)=>{const d=document.createElement('div');d.className='panel';d.style.animation='pop .4s ease '+(i*0.02)+'s backwards';d.innerHTML='<div class="panel-title">'+item.name+'</div><div class="panel-body">'+item.desc+'</div>';d.onclick=()=>{speak(noEmoji(item.name)+'。'+noEmoji(item.desc));learn(item.name)};box.appendChild(d)})}
-function renderHistory(tab,box){const src=HISTORY[tab]||[];box.innerHTML='';src.forEach((item,i)=>{const d=document.createElement('div');d.className='panel';d.style.animation='pop .4s ease '+(i*0.02)+'s backwards';let txt=item.desc;if(item.period)txt=item.period+'\n'+txt;d.innerHTML='<div class="panel-title">'+item.name+' '+(item.period?'<span style="font-size:13px;color:#888">'+item.period+'</span>':'')+'</div><div class="panel-body" style="white-space:pre-line">'+txt+'</div>';d.onclick=()=>{speak(noEmoji(item.name)+'。'+noEmoji(item.desc));learn(item.name)};box.appendChild(d)})}
-function renderSpace(tab,box){const src=SPACE[tab]||[];box.innerHTML='';src.forEach((item,i)=>{const d=document.createElement('div');d.className='panel';d.style.animation='pop .4s ease '+(i*0.02)+'s backwards';d.innerHTML='<div class="panel-title">'+item.name+'</div><div class="panel-body">'+item.desc+'</div>';d.onclick=()=>{speak(noEmoji(item.name)+'。'+noEmoji(item.desc));learn(item.name)};box.appendChild(d)})}
+/* 增强的庆祝效果 */
+function celebEmoji(emo,text){const app=document.getElementById('app');const el=document.createElement('div');el.className='celebrate';el.innerHTML=`<div class="big">${emo}</div><div class="text">${text}</div>`;app.appendChild(el);setTimeout(()=>el.remove(),1000);}
+function celebrate(){celebEmoji('⭐','真棒！');}
 
+/* ===== 通用渲染 ===== */
+function renderHome(){S.subject='';S.tab='';S.page=0;const app=document.getElementById('app');app.innerHTML=`<div class="topbar"><h1>${t('homeTitle')}</h1><div class="btns"><button class="btn" onclick="goStage('2')">👶 ${t('stage2')}</button><button class="btn" onclick="goStage('4')">🏫 ${t('stage4')}</button><button class="btn" onclick="toggleLang()">🌐 ${t('changeLang')}</button></div></div><div class="statBox"><div class="statCard" onclick="showHistory()"><b id="stTotal">${S.total}</b><span>${t('totalLearn')}</span></div><div class="statCard" onclick="showHistory()"><b id="stToday">${S.today.length}</b><span>${t('todayLearn')}</span></div><div class="statCard" onclick="setPlanPrompt()"><b id="stPlan">${S.plan}</b><span>${t('dailyPlan')}</span></div><div class="statCard"><b id="stProgText">${Math.min(100,Math.round((S.today.length/S.plan)*100))}%</b><span>${t('progress')}</span></div></div><div class="progBar"><i id="stProg" style="width:${Math.min(100,Math.round((S.today.length/S.plan)*100))}%"></i></div><div style="font-size:13px;color:#789;margin:8px 0;font-weight:700">🏷️ ${t('todayTag')}：<span id="stTags">${[...new Set(S.today.map(x=>x.subject).filter(Boolean))].join('、')||'-'}</span></div><div class="grid">${subCards()}</div>`;updateStatsUI();}
+function subCards(){const subs=[['chinese','语文王国','📚','古诗·儿歌·寓言·汉字'],['math','数学王国','🔢','数字·加减乘除·认知'],['english','英语王国','🔤','字母·单词·句子'],['science','百科王国','🌿','动物·植物·常识'],['geo','地理王国','🌍','七大洲·国家·地标'],['history','历史王国','👑','朝代·人物·发明'],['space','宇宙王国','🚀','太阳系·星星·银河']];return subs.map(([k,name,emoji,sub])=>`<div class="card" onclick="renderSubject('${k}')"><div class="emoji">${emoji}</div><div class="title">${t(k)||name}</div><div class="sub">${sub}</div></div>`).join('');}
+function renderSubject(key){S.subject=key;S.tab='';S.page=0;if(key==='chinese')renderChinese();else if(key==='math')renderMath();else if(key==='english')renderEnglish();else if(key==='science')renderScience();else if(key==='geo')renderGeo();else if(key==='history')renderHistory();else if(key==='space')renderSpace();}
+function subjectTop(title){return `<div class="topbar"><h1>${title}</h1><div class="btns"><button class="homeBtn" style="display:inline-flex" onclick="goHome()">🏠 ${t('backHome')}</button><button class="btn" onclick="toggleLang()">🌐 ${t('changeLang')}</button></div></div>`;}
+function wrapPage(html){document.getElementById('app').innerHTML=html;}
+/* 分页辅助 */
+function paginate(list,renderItem,perPage,pageKey){const pp=perPage||8;const p=S.page||0;const total=Math.ceil(list.length/pp);const slice=list.slice(p*pp,(p+1)*pp);let h=slice.map(renderItem).join('');if(total>1){h+=`<div class="pageNav"><button class="pageBtn" ${p===0?'disabled':''} onclick="S.page=${p-1};${pageKey}()">⬅️ 上一页</button><span class="pageInfo">${p+1} / ${total}</span><button class="pageBtn" ${p>=total-1?'disabled':''} onclick="S.page=${p+1};${pageKey}()">下一页 ➡️</button></div>`;}return h;}
+function showPop(title,text){const box=document.getElementById('qaBox');if(!box)return;box.innerHTML=`<div style="background:#fff;border-radius:18px;padding:18px;margin-top:10px;box-shadow:0 6px 24px rgba(0,0,0,.12);animation:slideUp .3s;border:2px solid rgba(255,255,255,.8)"><div style="font-size:20px;font-weight:900;margin-bottom:10px;color:#ff6b6b">${title}</div><div style="font-size:15px;line-height:1.8;color:#445;font-weight:700">${text}</div></div>`;}
 
-function showHistory(type){
-  const o=getStats();const body=$('historyBody');body.innerHTML='';const isToday=type==='today';
-  const list=isToday?o.todayList.slice().reverse():o.history.slice().reverse();
-  $('historyTitle').textContent=isToday?(lang==='zh'?'今日已学内容':'Today Learned'):(lang==='zh'?'全部学习记录':'All History');
-  if(list.length===0){body.innerHTML='<div style="text-align:center;color:#999;padding:20px;font-size:15px">'+(lang==='zh'?'还没有学习记录哦，快去探索吧！':'No records yet. Explore more!')+'</div>';}
-  else{
-    let lastDate='';
-    list.forEach(item=>{
-      if(!isToday&&item.date&&item.date!==lastDate){lastDate=item.date;const d=document.createElement('div');d.innerHTML='<div class="history-date">'+item.date+'</div>';body.appendChild(d);}
-      const row=document.createElement('div');row.className='history-item';
-      row.innerHTML='<span>'+item.t.replace(/</g,'&lt;')+'</span><time>'+(item.time||'')+'</time>';
-      body.appendChild(row);
-    });
-  }
-  $('historyModal').className='modal-overlay on';
-}
-function closeHistory(){$('historyModal').className='modal-overlay';}
+/* === 语文王国 === */
+function renderChinese(){const tabs=[['poems','古诗'],['rhymes','儿歌'],['fables','寓言'],['stories','故事'],['characters','汉字']];const active=S.tab||'poems';let h=subjectTop(t('chinese'))+'<div class="tabs">'+tabs.map(([k,label])=>`<div class="tab ${active===k?'on':''}" onclick="switchChineseTab('${k}')">${t(k)||label}</div>`).join('')+'</div>';h+=`<div class="pageTitle">${t(active)||tabs.find(t=>t[0]===active)[1]}</div>`;if(active==='characters'){const all=DATA.chinese.characters||[];const max=S.stage==='2'?100:300;const list=all.slice(0,Math.min(max,all.length));h+=paginate(list,(it,i)=>`<div class="charCard" onclick="speak('${it.char}，读音${it.pinyin}。${it.desc}');record({subject:'语文',tag:'汉字',title:'${it.char}'})"><div class="char">${it.char}</div><div class="pinyin">${it.pinyin}</div><div class="emoji">${it.emoji}</div></div>`,12,'renderChinese');}else{const list=DATA.chinese[active]||[];h+=paginate(list,(it,i)=>`<div class="listItem" onclick="learnChinese('${active}',${i})"><div class="line1"><span class="emoji">${it.emoji}</span><span class="name">${S.lang==='en'&&it.e?it.e:it.t}</span></div><div class="desc" style="color:#456;font-size:14px">${it.c}</div></div>`,6,'renderChinese');}h+=`<div id="qaBox"></div>`;wrapPage(h);}
+function switchChineseTab(tab){S.tab=tab;S.page=0;renderChinese();}
+function learnChinese(section,idx){const arr=DATA.chinese[section]||[];const globalIdx=idx+(S.page||0)*(section==='characters'?12:6);const it=arr[globalIdx];if(!it)return;speak(it.c||'');celebrate();record({subject:'语文',tag:section==='poems'?'古诗':section==='rhymes'?'儿歌':section==='fables'?'寓言':'故事',title:it.t});showPop(it.emoji+' '+it.t,it.c);}
 
-buildMB();
+/* === 数学王国 === */
+function renderMath(){let h=subjectTop(t('math'));const tabs=[['numbers','🔢 数字认知'],['arithmetic','📝 算术练习'],['cognition','🧩 趣味认知']];const active=S.mathTab||'numbers';h+='<div class="tabs">'+tabs.map(([k,label])=>`<div class="tab ${active===k?'on':''}" onclick="S.mathTab='${k}';S.page=0;renderMath()">${label}</div>`).join('')+'</div>';if(active==='numbers'){h+=`<div class="pageTitle">🔢 数字认知</div>`;const maxNum=S.stage==='2'?20:100;for(let i=1;i<=maxNum;i+=10){const row=DATA.math.numbers.slice(i-1,Math.min(i+9,maxNum));h+=`<div class="numGrid" style="justify-content:center">`+row.map(n=>`<div class="numChip" onclick="speak('${n.n}');record({subject:'数学',tag:'数字',title:'数字'+${n.n}})"><span class="emoji">${n.emoji}</span><span class="num">${n.n}</span></div>`).join('')+`</div>`;}}else if(active==='arithmetic'){h+=`<div class="pageTitle">${S.stage==='2'?'20以内':'100以内'}算术练习</div>`;h+=renderMathProg();}else if(active==='cognition'){h+=`<div class="pageTitle">🧩 趣味认知</div>`;const shapeList=S.stage==='2'?DATA.math.shapes.slice(0,5):DATA.math.shapes;h+=`<div class="groupTitle">📐 形状认知</div><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(110px,1fr))">${shapeList.map(s=>`<div class="card" onclick="speak('${s.name}，英文叫${s.en}。${s.desc}');record({subject:'数学',tag:'形状',title:'${s.name}'})"><div class="emoji">${s.emoji}</div><div class="title">${s.name}</div><div class="sub">${s.en}</div></div>`).join('')}</div>`;const sizeList=S.stage==='2'?DATA.math.sizeCompare.slice(0,4):DATA.math.sizeCompare;h+=`<div class="groupTitle">📏 大小比较</div><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(110px,1fr))">${sizeList.map(s=>`<div class="card" onclick="speak('${s.name}，英文叫${s.en}。${s.desc}');record({subject:'数学',tag:'大小',title:'${s.name}'})"><div class="emoji">${s.emoji}</div><div class="title">${s.name}</div><div class="sub">${s.en}</div></div>`).join('')}</div>`;const colorList=S.stage==='2'?DATA.math.colors.slice(0,6):DATA.math.colors;h+=`<div class="groupTitle">🎨 颜色分类</div><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(90px,1fr))">${colorList.map(c=>`<div class="card" onclick="speak('${c.name}，英文叫${c.en}。${c.desc}');record({subject:'数学',tag:'颜色',title:'${c.name}'})"><div class="emoji">${c.emoji}</div><div class="title">${c.name}</div><div class="sub">${c.en}</div></div>`).join('')}</div>`;}wrapPage(h);}
+function renderMathProg(){const r=parseInt(S.stage,10)||2;const range=r<=4?['10','20','100']:['100','200'];const map={add:'➕',sub:'➖',mul:'✖️',div:'➗'};return `<div class="stageCards">${range.map(rg=>['add','sub','mul','div'].map(t=>{const lbl={add:'加法',sub:'减法',mul:'乘法',div:'除法'}[t];return `<div class="stageCard" onclick="openMathQuiz('${rg}','${t}')"><div class="emoji">${map[t]}</div><div class="title">${rg=='10'||rg=='20'?rg+'以内':rg+'以内'}${lbl}</div></div>`;}).join('')).join('')}</div><div style="text-align:center;color:#789;font-size:13px;font-weight:700;margin-top:10px">点击卡片开始趣味练习吧！🎈</div>`;}
+
+/* === 英语王国 === */
+function renderEnglish(){const tabs=[['letters','字母'],['words','单词'],['phrases','短语'],['sentences','句子']];const active=S.tab||'letters';let h=subjectTop(t('english'))+'<div class="tabs">'+tabs.map(([k,label])=>`<div class="tab ${active===k?'on':''}" onclick="switchEnglishTab('${k}')">${t(k)||label}</div>`).join('')+'</div>';if(active==='letters'){h+=`<div class="pageTitle">${t(active)}</div><div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:10px">${DATA.english.letters.map(l=>`<div class="card" style="width:68px;padding:12px 4px" onclick="speakBoth('字母 ${l.ch}','${l.ch}');record({subject:'英语',tag:'字母',title:'${l.ch}'})"><div class="emoji">${l.emoji}</div><div class="title">${l.ch}</div></div>`).join('')}</div>`;}else if(active==='words'){h+=`<div class="pageTitle">${t(active)}</div><div class="grid">${DATA.english.words.map(w=>`<div class="card" onclick="speakBoth('${w.zh}','${w.en}');record({subject:'英语',tag:'单词',title:'${w.en}'})"><div class="emoji">${w.emoji}</div><div class="title">${w.en}</div><div class="sub">${w.zh}</div></div>`).join('')}</div>`;}else if(active==='phrases'){h+=`<div class="pageTitle">${t(active)}</div>${paginate(DATA.english.phrases,(p,i)=>`<div class="listItem" onclick="speakBoth('${p.zh}','${p.en}');record({subject:'英语',tag:'短语',title:'${p.en}'})"><div class="line1"><span class="name">${p.en}</span></div><div class="desc">${p.zh}</div></div>`,6,'renderEnglish')}`;}else if(active==='sentences'){h+=`<div class="pageTitle">${t(active)}</div>${paginate(DATA.english.sentences,(s,i)=>`<div class="listItem" onclick="speakBoth('${s.zh}','${s.en}');record({subject:'英语',tag:'句子',title:'${s.en}'})"><div class="line1"><span class="name">${s.en}</span></div><div class="desc">${s.zh}</div></div>`,6,'renderEnglish')}`;}h+=`<div id="qaBox"></div>`;wrapPage(h);}
+function switchEnglishTab(tab){S.tab=tab;S.page=0;renderEnglish();}
+
+/* === 百科、地理、历史、宇宙 === 修复朗读：名称+描述 */
+function renderScience(){let h=subjectTop(t('science'));const tabs=[['animals','动物'],['plants','植物'],['common','常识']];const active=S.tab||'animals';h+='<div class="tabs">'+tabs.map(([k,label])=>`<div class="tab ${active===k?'on':''}" onclick="S.tab='${k}';S.page=0;renderScience()">${t(k)||label}</div>`).join('')+'</div>';h+=`<div class="pageTitle">${t(active)}</div>`;const allList=DATA.science[active]||[];const list=S.stage==='2'?allList.slice(0,Math.min(4,allList.length)):allList;h+=paginate(list,(it)=>`<div class="listItem" onclick="speak('${it.name}，${it.desc}');record({subject:'百科',tag:'${active}',title:'${it.name||''}'})"><div class="line1"><span class="name">${it.name||''}</span><span class="emoji">${it.emoji}</span></div><div class="desc">${it.desc}</div></div>`,6,'renderScience');wrapPage(h);}
+function renderGeo(){let h=subjectTop(t('geo'));const tabs=[['continents','大洲'],['countries','国家'],['landmarks','地标'],['china','中国']];const active=S.tab||'continents';h+='<div class="tabs">'+tabs.map(([k,label])=>`<div class="tab ${active===k?'on':''}" onclick="S.tab='${k}';S.page=0;renderGeo()">${t(k)||label}</div>`).join('')+'</div>';h+=`<div class="pageTitle">${t(active)}</div>`;const allList=DATA.geo[active]||[];const list=S.stage==='2'?allList.slice(0,Math.min(4,allList.length)):allList;h+=paginate(list,(it)=>`<div class="listItem" onclick="speak('${it.name}，${it.desc}');record({subject:'地理',tag:'${active}',title:'${it.name||''}'})"><div class="line1"><span class="name">${it.name||''}</span><span class="emoji">${it.emoji}</span></div><div class="desc">${it.desc}</div></div>`,6,'renderGeo');wrapPage(h);}
+function renderHistory(){let h=subjectTop(t('history'));const tabs=[['dynasties','朝代'],['figures','人物'],['events','事件']];const active=S.tab||'dynasties';h+='<div class="tabs">'+tabs.map(([k,label])=>`<div class="tab ${active===k?'on':''}" onclick="S.tab='${k}';S.page=0;renderHistory()">${t(k)||label}</div>`).join('')+'</div>';h+=`<div class="pageTitle">${t(active)}</div>`;const allList=DATA.history[active]||[];const list=S.stage==='2'?allList.slice(0,Math.min(4,allList.length)):allList;h+=paginate(list,(it)=>`<div class="listItem" onclick="speak('${it.name}，${it.desc}');record({subject:'历史',tag:'${active}',title:'${it.name||''}'})"><div class="line1"><span class="name">${it.name||''}</span><span class="emoji">${it.emoji}</span></div><div class="desc">${it.desc}</div></div>`,6,'renderHistory');wrapPage(h);}
+function renderSpace(){let h=subjectTop(t('space'));const tabs=[['solar','太阳系'],['stars','星星'],['galaxy','星系'],['exploration','探索']];const active=S.tab||'solar';h+='<div class="tabs">'+tabs.map(([k,label])=>`<div class="tab ${active===k?'on':''}" onclick="S.tab='${k}';S.page=0;renderSpace()">${t(k)||label}</div>`).join('')+'</div>';h+=`<div class="pageTitle">${t(active)}</div>`;const allList=DATA.space[active]||[];const list=S.stage==='2'?allList.slice(0,Math.min(3,allList.length)):allList;h+=paginate(list,(it)=>`<div class="listItem" onclick="speak('${it.name}，${it.desc}');record({subject:'宇宙',tag:'${active}',title:'${it.name||''}'})"><div class="line1"><span class="name">${it.name||''}</span><span class="emoji">${it.emoji}</span></div><div class="desc">${it.desc}</div></div>`,6,'renderSpace');wrapPage(h);}
+
+load();
 renderHome();
-if(!(navigator.language&&navigator.language.toLowerCase().startsWith('zh'))){lang='en';renderHome();}
-updateStatsUI();
 </script>
-<div class="modal-overlay" id="historyModal" onclick="if(event.target===this)closeHistory()">
-  <div class="modal-sheet">
-    <div class="modal-head"><div class="modal-title" id="historyTitle">学习记录</div><button class="modal-close" onclick="closeHistory()">×</button></div>
-    <div class="modal-body" id="historyBody"></div>
-  </div>
-</div>
-</body></html>
-<!--12674611612395614730061322--><!--12903236032395614730061322--><!--13242904382395614730061322--><!--07688465992395614730061323--><!--07763004842395614730061323--><!--07983076632573747210061323--><!--08020471752573747210061323-->
+</body>
+</html>
